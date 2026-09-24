@@ -1,0 +1,32 @@
+# Output di build / cache
+.next
+out
+node_modules
+
+# Originali immagini (gitignored, > 100 MB)
+assets/originals
+
+# Locale / editor
+.git
+.gitignore
+.vscode
+.idea
+.DS_Store
+*.log
+
+# Env locali (mai nell'image, vengono passati a runtime).
+# Pattern esaustivo: il Dockerfile fa `COPY . .` nello stage builder, e sul disco
+# dello sviluppatore esiste .env.backup (service_role JWT di prod + DB password) e
+# .env.production. Senza questa esclusione una build locale li bakerebbe nei layer.
+# Allineato a .gitignore. Manteniamo solo gli *.example.
+.env
+.env.*
+!.env.*.example
+
+# Test / docs / piani interni
+.claude
+README.md
+CLAUDE.md
+
+# CI
+.github

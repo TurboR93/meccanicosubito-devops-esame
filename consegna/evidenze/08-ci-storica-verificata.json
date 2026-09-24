@@ -1,0 +1,101 @@
+{
+  "conclusion": "success",
+  "createdAt": "2026-06-02T16:31:20Z",
+  "databaseId": 26833635111,
+  "headSha": "bca78e160b40fbffc97f61d13427b161c2ae3475",
+  "jobs": [
+    {
+      "completedAt": "2026-06-02T16:33:53Z",
+      "conclusion": "success",
+      "databaseId": 79121499516,
+      "name": "Typecheck + Lint + Build",
+      "startedAt": "2026-06-02T16:31:24Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-06-02T16:31:25Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-06-02T16:31:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-06-02T16:31:27Z",
+          "conclusion": "success",
+          "name": "Checkout",
+          "number": 2,
+          "startedAt": "2026-06-02T16:31:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-06-02T16:31:32Z",
+          "conclusion": "success",
+          "name": "Setup Node",
+          "number": 3,
+          "startedAt": "2026-06-02T16:31:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-06-02T16:31:52Z",
+          "conclusion": "success",
+          "name": "Install dependencies",
+          "number": 4,
+          "startedAt": "2026-06-02T16:31:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-06-02T16:32:11Z",
+          "conclusion": "success",
+          "name": "Typecheck",
+          "number": 5,
+          "startedAt": "2026-06-02T16:31:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-06-02T16:32:20Z",
+          "conclusion": "success",
+          "name": "Lint",
+          "number": 6,
+          "startedAt": "2026-06-02T16:32:11Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-06-02T16:33:48Z",
+          "conclusion": "success",
+          "name": "Build (standalone, target Docker)",
+          "number": 7,
+          "startedAt": "2026-06-02T16:32:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-06-02T16:33:52Z",
+          "conclusion": "success",
+          "name": "Post Setup Node",
+          "number": 13,
+          "startedAt": "2026-06-02T16:33:48Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-06-02T16:33:52Z",
+          "conclusion": "success",
+          "name": "Post Checkout",
+          "number": 14,
+          "startedAt": "2026-06-02T16:33:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-06-02T16:33:52Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "startedAt": "2026-06-02T16:33:52Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/TurboR93/meccanicosubito/actions/runs/26833635111/job/79121499516"
+    }
+  ],
+  "updatedAt": "2026-06-02T16:33:55Z",
+  "url": "https://github.com/TurboR93/meccanicosubito/actions/runs/26833635111"
+}

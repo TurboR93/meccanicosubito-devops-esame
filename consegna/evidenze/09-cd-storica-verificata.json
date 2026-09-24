@@ -1,0 +1,164 @@
+{
+  "conclusion": "success",
+  "createdAt": "2026-05-30T09:50:32Z",
+  "databaseId": 26680816310,
+  "headSha": "e3b58b1858c32b95457554c5837c781956230737",
+  "jobs": [
+    {
+      "completedAt": "2026-05-30T09:53:18Z",
+      "conclusion": "success",
+      "databaseId": 78640772614,
+      "name": "Build & push image",
+      "startedAt": "2026-05-30T09:50:36Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-30T09:50:39Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-30T09:50:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-30T09:50:40Z",
+          "conclusion": "success",
+          "name": "Checkout",
+          "number": 2,
+          "startedAt": "2026-05-30T09:50:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-30T09:50:40Z",
+          "conclusion": "success",
+          "name": "Lowercase image name",
+          "number": 3,
+          "startedAt": "2026-05-30T09:50:40Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-30T09:50:48Z",
+          "conclusion": "success",
+          "name": "Setup Buildx",
+          "number": 4,
+          "startedAt": "2026-05-30T09:50:40Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-30T09:50:49Z",
+          "conclusion": "success",
+          "name": "Login to GHCR",
+          "number": 5,
+          "startedAt": "2026-05-30T09:50:48Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-30T09:53:13Z",
+          "conclusion": "success",
+          "name": "Build and push",
+          "number": 6,
+          "startedAt": "2026-05-30T09:50:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-30T09:53:15Z",
+          "conclusion": "success",
+          "name": "Post Build and push",
+          "number": 9,
+          "startedAt": "2026-05-30T09:53:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-30T09:53:15Z",
+          "conclusion": "success",
+          "name": "Post Login to GHCR",
+          "number": 10,
+          "startedAt": "2026-05-30T09:53:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-30T09:53:17Z",
+          "conclusion": "success",
+          "name": "Post Setup Buildx",
+          "number": 11,
+          "startedAt": "2026-05-30T09:53:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-30T09:53:17Z",
+          "conclusion": "success",
+          "name": "Post Checkout",
+          "number": 12,
+          "startedAt": "2026-05-30T09:53:17Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-30T09:53:17Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 13,
+          "startedAt": "2026-05-30T09:53:17Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/TurboR93/meccanicosubito/actions/runs/26680816310/job/78640772614"
+    },
+    {
+      "completedAt": "2026-05-30T09:53:42Z",
+      "conclusion": "success",
+      "databaseId": 78640913060,
+      "name": "Deploy to VPS",
+      "startedAt": "2026-05-30T09:53:21Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-30T09:53:23Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-30T09:53:22Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-30T09:53:40Z",
+          "conclusion": "success",
+          "name": "Deploy",
+          "number": 2,
+          "startedAt": "2026-05-30T09:53:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-30T09:53:40Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 3,
+          "startedAt": "2026-05-30T09:53:40Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/TurboR93/meccanicosubito/actions/runs/26680816310/job/78640913060"
+    },
+    {
+      "completedAt": "2026-05-30T09:53:19Z",
+      "conclusion": "skipped",
+      "databaseId": 78640913067,
+      "name": "Wait for Supabase schema sync",
+      "startedAt": "2026-05-30T09:53:19Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/TurboR93/meccanicosubito/actions/runs/26680816310/job/78640913067"
+    },
+    {
+      "completedAt": "2026-05-30T09:53:42Z",
+      "conclusion": "skipped",
+      "databaseId": 78640930624,
+      "name": "Smoke test (with rollback)",
+      "startedAt": "2026-05-30T09:53:42Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/TurboR93/meccanicosubito/actions/runs/26680816310/job/78640930624"
+    }
+  ],
+  "updatedAt": "2026-05-30T09:53:43Z",
+  "url": "https://github.com/TurboR93/meccanicosubito/actions/runs/26680816310"
+}

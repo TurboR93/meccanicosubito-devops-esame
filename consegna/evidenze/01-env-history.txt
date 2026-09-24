@@ -1,0 +1,15 @@
+# Verifica .env nella history — 2026-09-14 12:03
+$ git log --all --diff-filter=A --name-only -- .env .env.local .env.production .env.backup "*.env"
+(output vuoto = nessun file .env reale è mai stato aggiunto in nessun branch)
+
+$ git ls-files | grep -i env
+.env.backup.example
+.env.local.example
+.env.production.example
+
+$ git check-ignore -v .env.local .env.production .env.backup
+.gitignore:7:.env*.local	.env.local
+.gitignore:9:.env.production	.env.production
+.gitignore:10:.env.backup	.env.backup
+
+Commit totali su main: 460 — primo: 2026-04-30

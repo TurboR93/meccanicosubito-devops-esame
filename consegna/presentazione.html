@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>DevOps — MeccanicoSubito — Riccardo Brunello</title>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* Stile del template universitario (Canva "API GAS — Planty of Food"), scala 1280×720 */
+  @page { size: 1280px 720px; margin: 0; }
+  :root { --dark:#3a5a40; --sage:#bdc49f; --box:#2f4733; --flow:#4a6b50; --light:#c2d6c8; --ink:#2f2a30; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; background:#888; }
+  body { font-family: Arimo, Arial, Helvetica, sans-serif; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  @media print { html, body { background:none; } .s { margin:0 !important; } }
+  .s { width:1280px; height:720px; position:relative; overflow:hidden; padding:34px 60px 0 73px; margin:0 auto 20px; page-break-after:always; break-after:page; }
+  .dark { background:var(--dark); color:#fff; }
+  .sage { background:var(--sage); color:var(--ink); }
+  .logo { position:absolute; top:17px; right:17px; width:37px; height:37px; object-fit:contain; }
+  h1 { font-family:"PT Sans", Arimo, sans-serif; font-weight:700; font-size:55px; line-height:.98; letter-spacing:-.01em; color:var(--light); margin:0; }
+  h2 { font-size:29px; font-weight:700; margin:0 0 18px; line-height:1.3; }
+  .dark h2 { color:var(--sage); }
+  h3 { font-size:17px; font-weight:700; margin:0 0 6px; }
+  .dark h3 { color:var(--sage); }
+  p { font-size:15.5px; line-height:1.36; margin:0 0 10px; }
+  .small { font-size:13px; line-height:1.35; }
+  .it { font-style:italic; }
+  .row { display:flex; gap:34px; align-items:flex-start; }
+  .box { background:var(--box); border:1.5px solid var(--sage); border-radius:19px; padding:20px 24px; color:var(--light); }
+  .sage .box { border-color:var(--ink); }
+  .code { font-weight:700; font-size:13.5px; line-height:1.42; white-space:pre; margin:0; color:var(--light); font-family:Arimo, Arial, sans-serif; }
+  .code.alt { color:var(--sage); }
+  .caption { font-size:13.5px; font-style:italic; text-align:center; margin:8px 0 0; }
+  .lbl { font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--sage); margin:0 0 2px; }
+  .val { font-size:14px; font-weight:700; color:var(--light); margin:0 0 13px; word-break:break-all; line-height:1.3; }
+  /* diagrammi di flusso */
+  .fbox { background:var(--flow); border:1.5px solid var(--sage); border-radius:8px; color:#fff; font-weight:700; font-size:12.5px; line-height:1.35; text-align:center; padding:9px 10px; }
+  .fbox.alt { background:var(--sage); color:var(--box); }
+  .fbox.end { font-style:italic; color:var(--sage); }
+  .sage .fbox { border-color:var(--ink); }
+  .sage .fbox.alt { background:var(--box); color:var(--sage); }
+  .arr { color:var(--sage); text-align:center; font-weight:700; font-size:15px; line-height:1; margin:3px 0; }
+  .sage .arr { color:var(--ink); }
+  /* screenshot + segnaposto */
+  .shot { position:relative; border:1.5px solid var(--sage); border-radius:12px; overflow:hidden; background:#2b2735; }
+  .sage .shot { border-color:var(--ink); }
+  .shot img { display:block; width:100%; height:100%; object-fit:contain; }
+  .shot img.top { object-fit:cover; object-position:top; }
+  .ph { position:absolute; inset:0; display:none; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:22px;
+        background:var(--box); border:2px dashed var(--sage); border-radius:12px; color:var(--light); }
+  .shot.missing img { display:none; } .shot.missing .ph { display:flex; }
+  .ph b { font-size:17px; color:#fff; margin-bottom:10px; }
+  .ph span { font-size:13.5px; line-height:1.45; }
+  .ph code { margin-top:10px; font-size:12.5px; color:var(--sage); }
+  .check { list-style:none; padding:0; margin:0; }
+  .check li { font-size:15.5px; line-height:1.35; margin:0 0 9px; padding-left:26px; position:relative; }
+  .check li i { position:absolute; left:0; font-style:normal; font-weight:700; }
+  table.alert { border-collapse:collapse; width:100%; }
+  table.alert td { font-size:13.5px; line-height:1.32; padding:6px 8px; border-bottom:1px solid rgba(47,42,48,.28); vertical-align:top; }
+  table.alert td:first-child { font-weight:700; width:150px; }
+  a { color:inherit; }
+</style>
+</head>
+<body>
+
+<!-- 1 · COPERTINA + LINK DELLA CONSEGNA -->
+<section class="s dark">
+  <img class="logo" src="assets/logo-hautomatico.png" alt="">
+  <div style="position:absolute;left:80px;top:120px;width:640px">
+    <h1>MECCANICOSUBITO<br>CICLO DEVOPS</h1>
+    <p style="font-family:'PT Sans',Arimo,sans-serif;font-size:19px;color:var(--light);margin-top:38px">Riccardo Brunello · Master · 24-09-2026</p>
+    <p style="font-size:17px;color:var(--light);line-height:1.45;margin-top:22px;max-width:560px">Dall'ambiente locale alla produzione: container, pipeline CI/CD, gestione dei secrets e monitoraggio di un'app reale.</p>
+    <p style="font-family:'PT Sans',Arimo,sans-serif;font-size:16px;font-weight:700;color:var(--light);text-decoration:underline;margin-top:46px">DOCKER · GITHUB ACTIONS · NGINX · SUPABASE · SENTRY</p>
+  </div>
+  <div class="box" style="position:absolute;left:787px;top:53px;width:433px;height:593px;padding:28px 30px">
+    <p class="lbl" style="font-size:13px;margin-bottom:18px">Link della consegna</p>
+    <p class="lbl">App pubblica</p>
+    <p class="val"><a href="https://meccanicosubito.it">https://meccanicosubito.it</a></p>
+    <p class="lbl">Health check</p>
+    <p class="val"><a href="https://meccanicosubito.it/api/health">https://meccanicosubito.it/api/health</a></p>
+    <p class="lbl">Repository pubblica dell’esame</p>
+    <p class="val"><a href="https://github.com/TurboR93/meccanicosubito-devops-esame">Apri meccanicosubito-devops-esame</a></p>
+    <p class="lbl">Ultima CI verde storica · 02/06/2026</p>
+    <p class="val"><a href="https://github.com/TurboR93/meccanicosubito/actions/runs/26833635111">Apri run CI 26833635111</a></p>
+    <p class="lbl">Run CD storica · 30/05/2026</p>
+    <p class="val"><a href="https://github.com/TurboR93/meccanicosubito/actions/runs/26680816310">Apri run CD 26680816310</a></p>
+    <p class="lbl">README e prove</p>
+    <p class="val" style="margin:0">README-DEVOPS.md<br>evidenze/ · workflows-storici/</p>
+    <p class="small" style="margin:18px 0 0">Solo materiali d’esame e prove esportate. Il codice dell’app e le run Actions originali restano nella repository privata.</p>
+  </div>
+</section>
+
+<!-- 2 · ESPLORAZIONE -->
+<section class="s sage">
+  <img class="logo" src="assets/logo-hautomatico.png" alt="">
+  <h2>1. Esplorazione: cosa deployiamo e con quali strumenti</h2>
+  <div class="row" style="margin-top:26px">
+    <div style="width:640px">
+      <p>MeccanicoSubito mette in contatto chi ha bisogno di un meccanico con l'officina giusta vicina: il cliente cerca sulla mappa, invia le foto del problema e prenota; l'officina gestisce calendario, preventivi, chat e incassi.</p>
+      <p>Stack: Next.js 15 + TypeScript · Supabase (Postgres con RLS, Auth, Storage, 134 migration) · Stripe Connect · Docker dietro Nginx su VPS.</p>
+      <p>Cosa rende delicato il deploy: le variabili NEXT_PUBLIC_* finiscono nel bundle al build, codice e schema del database devono arrivare in ordine e ci sono pagamenti reali, quindi servono rollback e modalità manutenzione.</p>
+      <h3 style="margin-top:18px">Perché GitHub Actions (e non GitLab CI)</h3>
+      <p>Il codice è già su GitHub: trigger nativi su push e PR, Secrets mascherati nei log, GHCR come registry con token effimero, integrazione Supabase per le migration e minuti gratuiti sufficienti.</p>
+      <p class="small it">Evoluzione reale: GitHub Pages (solo statico, superato) → CI/CD Actions verso il VPS (09/05–02/06) → deploy scriptato dal Mac con gli stessi step.</p>
+    </div>
+    <div style="width:480px">
+      <div class="box" style="padding:24px 28px">
+        <p class="lbl">Development</p>
+        <p class="val" style="margin-bottom:4px">localhost:3000 · .env.local</p>
+        <p class="small" style="margin-bottom:20px">dati mock oppure Supabase locale in Docker con migration e seed · pre-commit Husky: typecheck + lint</p>
+        <p class="lbl">Staging (logico)</p>
+        <p class="val" style="margin-bottom:4px">nessun server dedicato</p>
+        <p class="small" style="margin-bottom:20px">prima del deploy: prove su Supabase locale · immagine Docker linux/amd64 · npm run deploy:dry (preflight e migration, senza build)</p>
+        <p class="lbl">Production</p>
+        <p class="val" style="margin-bottom:4px">meccanicosubito.it · VPS + Supabase Cloud</p>
+        <p class="small" style="margin-bottom:20px">.env.production solo sul server · smoke test e rollback automatico a :previous</p>
+        <p class="small it" style="color:var(--sage);margin:0">Scelta: una fase di validazione locale. I test con bypass della manutenzione avvengono invece sul sito già pubblicato.</p>
+      </div>
+      <p class="caption">Sviluppo → staging logico locale → pubblicazione e smoke test.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · CONTAINERIZZAZIONE -->
+<section class="s dark">
+  <img class="logo" src="assets/logo-hautomatico.png" alt="">
+  <h2>2. Containerizzazione</h2>
+  <p class="it" style="font-size:16px;margin:-6px 0 22px">Il container è l'unità base del ciclo: la stessa immagine gira in locale e in produzione.</p>
+  <div class="row">
+    <div style="width:650px">
+      <h3>Dockerfile multi-stage (front end Next.js)</h3>
+      <p>deps → npm ci in cache · builder → NEXT_PUBLIC_* come build-arg e output standalone · runner → solo i file necessari, utente non-root. Il runtime include solo l’output necessario; .dockerignore esclude i file .env dai layer.</p>
+      <h3 style="margin-top:16px">docker-compose</h3>
+      <p>Servizio web con secrets da env_file (mai dentro l'immagine), porta esposta solo su 127.0.0.1 dietro Nginx, healthcheck su /api/health ogni 30 s, restart automatico e log con rotazione.</p>
+      <h3 style="margin-top:16px">Back end in locale</h3>
+      <p>Supabase avviato dalla Supabase CLI come stack di container (Postgres, Auth, REST, Storage, Studio) allineato alla versione cloud, con migration e seed. In produzione il back end è managed, quindi il compose di produzione contiene solo web.</p>
+      <p class="small it" style="margin-top:14px;color:var(--light)">Perché: immagine ridotta e runtime riproducibile; configurazione, dati e servizi esterni restano diversi tra gli ambienti.</p>
+    </div>
+    <div style="width:470px">
+      <div class="box" style="padding:26px 30px">
+<pre class="code"># back end + front end in locale
+npm run db:start
+npm run db:reset
+npm run dev
+
+# container di produzione in locale
+docker compose up -d --build
+docker compose ps
+curl localhost:3000/api/health</pre>
+<pre class="code alt" style="margin-top:22px">{"status": "ok",
+ "commit": "…",
+ "builtAt": "…"}
+
+docker compose logs -f web</pre>
+      </div>
+      <p class="caption" style="color:var(--light)">Comandi documentati nel README-DEVOPS.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · SICUREZZA E SECRETS -->
+<section class="s sage">
+  <img class="logo" src="assets/logo-hautomatico.png" alt="">
+  <h2>3. Sicurezza e gestione dei secrets</h2>
+  <div class="row" style="margin-top:26px">
+    <div style="width:640px">
+      <p>.env.local sul Mac, .env.production solo sul VPS, .env.backup con chmod 400: tutti esclusi da .gitignore e .dockerignore. Nel repository originale sono versionati solo i file .example con i nomi delle variabili.</p>
+      <p>Verificato sulla history: nessun file .env reale è mai stato committato, in nessun branch.</p>
+      <p>Pipeline storica: 7 GitHub Secrets e 4 Variables nell’inventario del 14/09. I secrets runtime (service_role Supabase e chiavi Stripe) restano sul server. Oggi il token source map Sentry è solo sul Mac e arriva a Docker come build secret.</p>
+      <p>Log della pipeline: 1.742 righe analizzate, 31 valori mascherati con ***, 0 chiavi in chiaro. Anche su Sentry il token della route di test arriva come [Filtered].</p>
+      <p class="small it" style="margin-top:14px">Lezione: il secret VPS_USER=deploy fa mascherare ogni parola «deploy» nei log. I secrets devono essere valori ad alta entropia; lo username va in una Variable.</p>
+    </div>
+    <div style="width:480px">
+      <div class="box" style="padding:26px 30px">
+<pre class="code">$ git log --all --diff-filter=A \
+    -- .env .env.local .env.production
+(nessun output)
+
+$ git ls-files | grep env
+.env.backup.example
+.env.local.example
+.env.production.example</pre>
+<pre class="code alt" style="margin-top:26px"># log GitHub Actions · valori mascherati
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=***
+host: ***   key: ***
+# run fallita 26833635113
+dial tcp ***:22: i/o timeout</pre>
+      </div>
+      <p class="caption">Verifiche reali su repository e log della pipeline.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · PIPELINE CI -->
+<section class="s dark">
+  <img class="logo" src="assets/logo-hautomatico.png" alt="">
+  <h2>4. Pipeline CI storica: validazione su push e PR</h2>
+  <div class="row" style="margin-top:22px;gap:40px">
+    <div style="width:470px">
+      <div class="fbox">push su main · pull_request</div>
+      <div class="arr">↓</div>
+      <div class="fbox">checkout · Node 20 (cache npm) · npm ci</div>
+      <div class="arr">↓</div>
+      <div style="display:flex;gap:14px"><div class="fbox" style="flex:1">Typecheck<br>(tsc --noEmit)</div><div class="fbox alt" style="flex:1">Lint<br>(next lint)</div></div>
+      <div class="arr">↓</div>
+      <div class="fbox">Build standalone (npm run build:docker)</div>
+      <div class="arr">↓</div>
+      <div class="fbox end">✔ tutto verde → run verde · ✖ un errore → run rossa</div>
+      <p style="margin-top:22px">Il lint è uno step esplicito: se fallisce, il job diventa rosso ed è visibile su Actions, sul commit e sulla PR. Esempi reali: run 25784837319 (step Typecheck) e 25610054412 (step Build).</p>
+      <p class="small it" style="color:var(--light)">Totale: 101 run verdi · 5 fallite. Prima barriera in locale: pre-commit Husky con typecheck + lint.</p>
+    </div>
+    <div style="width:620px">
+      <div class="box" style="min-height:400px;padding:26px 30px">
+        <p class="lbl">Esiti esportati da GitHub · verifica 23/09/2026</p>
+        <h3 style="font-size:25px;color:#fff;margin:16px 0">CI · SUCCESS</h3>
+        <p>Run 26833635111 · 02/06/2026<br>Commit bca78e1 · durata job 2 min 29 s</p>
+        <table style="width:100%;border-collapse:collapse;font-size:16px;margin-top:22px">
+          <tr><td style="padding:10px 0;border-bottom:1px solid #bdc49f">Install dependencies</td><td>success</td></tr>
+          <tr><td style="padding:10px 0;border-bottom:1px solid #bdc49f">Typecheck</td><td>success</td></tr>
+          <tr><td style="padding:10px 0;border-bottom:1px solid #bdc49f">Lint</td><td>success</td></tr>
+          <tr><td style="padding:10px 0">Build (standalone, target Docker)</td><td>success</td></tr>
+        </table>
+        <p class="small" style="margin-top:24px">Fonte: <a href="https://github.com/TurboR93/meccanicosubito/actions/runs/26833635111">run GitHub Actions</a> e file<br>evidenze/08-ci-storica-verificata.json</p>
+      </div>
+      <p class="caption" style="color:var(--light)">Pipeline del periodo maggio–giugno 2026; oggi rimossa da main.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · PIPELINE CD E DEPLOY PUBBLICO -->
+<section class="s sage">
+  <img class="logo" src="assets/logo-hautomatico.png" alt="">
+  <h2>5. Pipeline CD storica e deploy pubblico</h2>
+  <div style="display:flex;align-items:center;gap:6px;margin:20px 0 26px">
+    <div class="fbox" style="flex:1">push su main<br>+ gate di attivazione</div><div class="arr">→</div>
+    <div class="fbox" style="flex:1">build-and-push<br>immagine su GHCR</div><div class="arr">→</div>
+    <div class="fbox" style="flex:1">wait-for-schema<br>skipped nella run</div><div class="arr">→</div>
+    <div class="fbox" style="flex:1">deploy via SSH<br>tag :previous · compose up</div><div class="arr">→</div>
+    <div class="fbox alt" style="flex:1">smoke test + rollback<br>skipped nella run</div>
+  </div>
+  <div class="row">
+    <div style="width:600px">
+      <h3>Perché un VPS con Docker + Nginx (e non Vercel, Netlify o Pages)</h3>
+      <p>Runtime Node completo per middleware, route API e webhook Stripe; controllo diretto su TLS, header di sicurezza, rate-limit e modalità manutenzione; costo fisso e dati in UE. GitHub Pages è stato provato ed escluso perché serve solo file statici.</p>
+      <h3 style="margin-top:14px">Run CD che ha prodotto l'ultimo deploy via pipeline</h3>
+      <p>github.com/TurboR93/meccanicosubito/actions/runs/26680816310 · 30/05/2026 · 3m11s · build ✔ · deploy ✔</p>
+      <p class="small it" style="margin-top:12px">Onestà: dal 02/06 lo stesso flusso gira con npm run deploy dal Mac, perché i runner GitHub non raggiungevano più l'SSH del VPS (i/o timeout). Verifica del 23/09: in produzione c’è il commit 756d161, build del 22/09/2026. Nella run storica schema e smoke test erano skipped: il dettaglio è conservato nelle evidenze.</p>
+    </div>
+    <div style="width:530px">
+      <div class="shot" style="height:250px">
+        <img class="top" src="screenshot/sito-live-home.png" onerror="this.parentNode.classList.add('missing')">
+        <div class="ph"><b>📷 Screenshot da inserire</b><span>Home page di https://meccanicosubito.it</span><code>screenshot/sito-live-home.png</code></div>
+      </div>
+      <div class="box" style="border-radius:10px;margin-top:10px;padding:12px 16px">
+        <p class="small" style="margin:0">Health verificato il 23/09 · HTTP 200 · status: ok<br>commit: 756d161 · build: 22/09/2026 14:11 UTC</p>
+      </div>
+      <p class="caption">https://meccanicosubito.it · HTTP 200 · /api/health → status ok</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · MONITORAGGIO -->
+<section class="s dark">
+  <img class="logo" src="assets/logo-hautomatico.png" alt="">
+  <h2>6. Monitoraggio: uptime ed error tracking</h2>
+  <div class="row" style="margin-top:22px;gap:40px">
+    <div style="width:555px">
+      <h3>UptimeRobot · il sito visto da fuori</h3>
+      <div class="box" style="height:330px;margin-top:10px;padding:24px 28px">
+        <p class="lbl">Monitor già attivo · riscontro nei log del 22/09</p>
+        <p style="font-size:28px;font-weight:700;color:#fff;margin:20px 0">218 richieste · tutte HTTP 200</p>
+        <p>HEAD /api/health<br>User-agent UptimeRobot<br>Intervallo osservato: circa 5 minuti</p>
+        <p class="small" style="margin-top:22px">Fonte: docs/sentry-observability.md §6,<br>commit 6b577b7. Verifica operativa del 22/09,<br>riportata nella consegna del 23/09.</p>
+        <p class="small it" style="margin-top:20px">Da verificare in dashboard: destinatario e ritardo degli alert.</p>
+      </div>
+      <p style="margin-top:14px">Controlla dall’esterno la disponibilità HTTP dell’app. Le richieste HEAD osservate non verificano il contenuto JSON.</p>
+      <p class="small it" style="color:var(--light)">Limite: /api/health non controlla Supabase e Stripe. Lo screenshot della dashboard resta una prova integrativa da acquisire.</p>
+    </div>
+    <div style="width:555px">
+      <h3>Sentry · gli errori dell'app</h3>
+      <div class="shot" style="height:330px;margin-top:10px">
+        <img src="screenshot/sentry-02-evento-production.png" onerror="this.parentNode.classList.add('missing')">
+        <div class="ph"><b>📷 Screenshot da inserire</b><span>Sentry → Issues con l'evento registrato</span><code>screenshot/sentry-02-evento-production.png</code></div>
+      </div>
+      <p style="margin-top:14px">Test del 15/09: evento MECCANICOSUBITO-2, environment production, release 300161757fb7, coincidente con /api/health al momento del test.</p>
+      <p class="small it" style="color:var(--light)">Server, edge e browser con stack trace leggibili. Gli errori gestiti con solo console.error non vengono inviati; la ricezione degli alert va verificata a parte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · ERRORE SIMULATO E ALERT -->
+<section class="s sage">
+  <img class="logo" src="assets/logo-hautomatico.png" alt="">
+  <h2>7. Errore simulato e interpretazione degli alert</h2>
+  <div class="row" style="margin-top:22px;gap:38px">
+    <div style="width:560px">
+      <h3>Simulazione del 15/09 in produzione</h3>
+      <div class="box" style="border-radius:12px;padding:14px 18px;margin-top:8px">
+<pre class="code" style="font-size:12.5px"># route di test protetta da token
+$ curl …/api/debug-sentry                   → 404
+$ curl …/api/debug-sentry?token=sbagliato   → 404
+$ curl …/api/debug-sentry?token=$TOKEN      → 500</pre>
+      </div>
+      <div class="shot" style="height:232px;margin-top:12px">
+        <img src="screenshot/sentry-03-stack-trace.png" onerror="this.parentNode.classList.add('missing')">
+        <div class="ph"><b>📷 Screenshot da inserire</b><span>Stack trace dell'evento su Sentry</span><code>screenshot/sentry-03-stack-trace.png</code></div>
+      </div>
+      <p class="caption">L'errore arriva su Sentry con lo stack trace (route.ts:31) e il token come [Filtered].</p>
+    </div>
+    <div style="width:560px">
+      <h3>Come leggere gli alert</h3>
+      <table class="alert" style="margin-top:6px">
+        <tr><td>DOWN · timeout</td><td>VPS o Nginx irraggiungibili → SSH al VPS, console Hostinger, DNS Cloudflare</td></tr>
+        <tr><td>DOWN · 502</td><td>Nginx attivo ma container fermo → docker compose ps e logs; se il deploy è recente, rollback a :previous</td></tr>
+        <tr><td>DOWN · 503</td><td>modalità manutenzione accesa → npm run maintenance status, poi off</td></tr>
+        <tr><td>Health 200, operazione KO</td><td>il controllo è superficiale → verificare log applicativi e dipendenze Supabase/Stripe</td></tr>
+        <tr><td>Sentry · nuovo issue dopo un deploy</td><td>regressione del rilascio → se blocca login, prenotazioni o pagamenti, rollback</td></tr>
+        <tr><td>Sentry · picco di un issue noto</td><td>problema esterno (Supabase, Stripe) o traffico anomalo → status page e log Nginx</td></tr>
+        <tr><td>Sentry · issue isolato</td><td>caso limite di un utente → backlog</td></tr>
+      </table>
+      <p style="font-weight:700;margin-top:14px">Regola: prima si mitiga (rollback o manutenzione), poi si indaga.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · RISULTATO E PROSSIMI PASSI -->
+<section class="s dark">
+  <img class="logo" src="assets/logo-hautomatico.png" alt="">
+  <h2>8. Risultato finale e sviluppi</h2>
+  <p class="it" style="font-size:16px;margin:-6px 0 24px">Un ciclo DevOps reale su un'app in produzione, verificato sui dati: repository, 250+ run di pipeline e sito live.</p>
+  <div class="row" style="gap:44px">
+    <div style="width:600px">
+      <ul class="check">
+        <li><i>✔</i>Architettura e staging logico locale prima del deploy</li>
+        <li><i>✔</i>Dockerfile multi-stage, docker-compose, avvio locale documentato</li>
+        <li><i>✔</i>.env fuori dal repository, GitHub Secrets, log senza chiavi in chiaro</li>
+        <li><i>✔</i>CI storica su push e PR: typecheck, lint e build verificati</li>
+        <li><i>✔</i>CD storico documentato; oggi deploy scriptato dal Mac e sito live</li>
+        <li><i>✔</i>Sentry in produzione con evento registrato</li>
+        <li><i>✔</i>UptimeRobot attivo, riscontrato nei log del server</li>
+        <li><i>☐</i>Ultima verifica: destinatari e ricezione degli alert</li>
+      </ul>
+    </div>
+    <div style="width:500px">
+      <div class="box" style="padding:24px 28px">
+        <p class="lbl" style="margin-bottom:14px">Scelte e limiti da discutere</p>
+        <p class="small" style="color:#fff"><b>Deploy attuale dal Mac</b>: comando avviato dallo sviluppatore, poi build, trasferimento, swap, smoke test e rollback scriptati.</p>
+        <p class="small" style="color:#fff;margin-top:12px"><b>Smoke test saltato</b> perché un job precedente era skipped → <span style="color:var(--sage)">if: always() &amp;&amp; needs.deploy.result == 'success'</span></p>
+        <p class="small" style="color:#fff;margin-top:12px"><b>CI e CD in parallelo</b> → un workflow unico con <span style="color:var(--sage)">deploy: needs: validate</span>, così il deploy parte solo con la CI verde.</p>
+        <p class="small" style="color:#fff;margin-top:12px"><b>Staging logico</b>: prove locali e dry run precedono la pubblicazione. OAuth Google ed email reali richiedono controlli nell’ambiente pubblico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

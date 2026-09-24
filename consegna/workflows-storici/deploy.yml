@@ -1,0 +1,231 @@
+name: Deploy production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Solo un deploy per volta su main; quelli vecchi vengono cancellati.
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false  # NON cancellare deploy in corso (rollback in caso)
+
+permissions:
+  contents: read
+  packages: write  # per pushare immagini su GHCR
+
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/meccanicosubito
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # GATE — il workflow non parte finché vars.PROD_DEPLOY_ENABLED != 'true'.
+  # Permette di mergeare la pipeline in repo prima di completare il setup
+  # (vedi deploy/CICD-SETUP.md). Per attivare: Repo → Settings → Secrets and
+  # variables → Actions → Variables → New variable → PROD_DEPLOY_ENABLED=true.
+  # ---------------------------------------------------------------------------
+
+  # ---------------------------------------------------------------------------
+  # 1. Build immagine Docker in CI e push su GitHub Container Registry.
+  #    Sposta il build OFF dal VPS (era 2-4 GB RAM peak per 3-5 min).
+  # ---------------------------------------------------------------------------
+  build-and-push:
+    name: Build & push image
+    if: ${{ vars.PROD_DEPLOY_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      image_tag: ${{ steps.meta.outputs.image_tag }}
+      image_lower: ${{ steps.meta.outputs.image_lower }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Lowercase image name
+        id: meta
+        run: |
+          IMAGE_LOWER=$(echo "$IMAGE_NAME" | tr '[:upper:]' '[:lower:]')
+          echo "image_lower=$IMAGE_LOWER" >> "$GITHUB_OUTPUT"
+          echo "image_tag=$IMAGE_LOWER:${{ github.sha }}" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: |
+            ${{ steps.meta.outputs.image_lower }}:${{ github.sha }}
+            ${{ steps.meta.outputs.image_lower }}:latest
+          # Cache GHA per layer fra build: 1° build ~6-8 min, successivi 2-3 min.
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            NEXT_PUBLIC_DATA_SOURCE=supabase
+            NEXT_PUBLIC_SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+            NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+            NEXT_PUBLIC_COMMIT_SHA=${{ github.sha }}
+            NEXT_PUBLIC_BUILD_TIME=${{ github.event.head_commit.timestamp }}
+            NEXT_PUBLIC_SITE_URL=${{ vars.NEXT_PUBLIC_SITE_URL || 'https://meccanicosubito.it' }}
+            NEXT_PUBLIC_GTM_ID=${{ vars.NEXT_PUBLIC_GTM_ID }}
+            NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
+            NEXT_PUBLIC_STRIPE_BNPL_MIN_AMOUNT_CENTS=${{ vars.NEXT_PUBLIC_STRIPE_BNPL_MIN_AMOUNT_CENTS || '15000' }}
+            NEXT_PUBLIC_DEPOSIT_ENABLED=${{ vars.NEXT_PUBLIC_DEPOSIT_ENABLED || 'false' }}
+
+  # ---------------------------------------------------------------------------
+  # 2. Aspetta che la migration più recente del repo sia registrata sul cloud
+  #    Supabase (la GitHub Integration di Supabase ci pensa, ma in parallelo).
+  #    Race condition: se l'app va live prima dello schema → 500 PostgREST.
+  # ---------------------------------------------------------------------------
+  wait-for-schema:
+    name: Wait for Supabase schema sync
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # Skip se non c'è SUPABASE_DB_PASSWORD configurato (degrada a unsafe deploy)
+    if: ${{ vars.SUPABASE_DB_PASSWORD_SET == 'true' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install psql
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+
+      - name: Poll schema_migrations until aligned (max 120 s)
+        env:
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          NEXT_PUBLIC_SUPABASE_PROJECT_REF: ${{ secrets.NEXT_PUBLIC_SUPABASE_PROJECT_REF }}
+        run: |
+          set -e
+          LATEST=$(ls supabase/migrations/*.sql | tail -1 | xargs basename | cut -d_ -f1)
+          REF="${NEXT_PUBLIC_SUPABASE_PROJECT_REF:-ozpxskvxdhzrzedkmduw}"
+          DB_URL="postgresql://postgres.${REF}:$(printf '%s' "$SUPABASE_DB_PASSWORD" | jq -sRr @uri)@aws-0-eu-west-1.pooler.supabase.com:5432/postgres"
+          echo "Waiting for migration $LATEST on cloud…"
+          for i in $(seq 1 24); do
+            FOUND=$(psql "$DB_URL" -tAc "select version from supabase_migrations.schema_migrations where version = '$LATEST'" 2>/dev/null || true)
+            if [ "$FOUND" = "$LATEST" ]; then
+              echo "OK: migration $LATEST registered on cloud (after ${i} polls)"
+              exit 0
+            fi
+            echo "  attempt $i/24: not yet, sleeping 5 s…"
+            sleep 5
+          done
+          echo "FAIL: migration $LATEST never appeared on cloud (timeout 120 s)"
+          echo "Check the GitHub ↔ Supabase Integration in Supabase dashboard."
+          exit 1
+
+  # ---------------------------------------------------------------------------
+  # 3. Deploy via SSH: pull immagine GHCR sul VPS, tag previous, up.
+  # ---------------------------------------------------------------------------
+  deploy:
+    name: Deploy to VPS
+    needs: [build-and-push, wait-for-schema]
+    # wait-for-schema può essere skipped (vars.SUPABASE_DB_PASSWORD_SET != 'true')
+    if: |
+      always() &&
+      needs.build-and-push.result == 'success' &&
+      (needs.wait-for-schema.result == 'success' || needs.wait-for-schema.result == 'skipped')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            set -euo pipefail
+            cd /home/deploy/meccanicosubito
+
+            # Allinea repo (per docker-compose.yml + script aggiornati).
+            git fetch origin main
+            git reset --hard origin/main
+
+            # Pre-deploy guard (Gap #1).
+            ./deploy/predeploy-check.sh
+
+            # Login GHCR (token di un PAT readonly memorizzato sul VPS).
+            # In alternativa: GITHUB_TOKEN passato da workflow (più sicuro).
+            echo "${{ secrets.GHCR_PULL_TOKEN }}" | docker login ghcr.io -u "${{ github.repository_owner }}" --password-stdin
+
+            # Tagga l'immagine corrente come :previous (per rollback istantaneo).
+            IMAGE="${{ needs.build-and-push.outputs.image_lower }}"
+            if docker image inspect "$IMAGE:latest" >/dev/null 2>&1; then
+              docker tag "$IMAGE:latest" "$IMAGE:previous"
+              echo "Tagged previous image"
+            else
+              echo "No previous :latest yet — first deploy"
+            fi
+
+            # Pull nuova immagine.
+            docker pull "$IMAGE:${{ github.sha }}"
+            docker tag "$IMAGE:${{ github.sha }}" "$IMAGE:latest"
+
+            # Restart container con nuova image.
+            set -a && source .env.production && set +a
+            docker compose up -d --no-build
+            sleep 5
+            docker compose ps
+
+  # ---------------------------------------------------------------------------
+  # 4. Smoke test: usa lo script in repo. Su fail → rollback.
+  # ---------------------------------------------------------------------------
+  smoke-test:
+    name: Smoke test (with rollback)
+    needs: [build-and-push, deploy]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Run smoke test on VPS
+        id: smoke
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            set -e
+            cd /home/deploy/meccanicosubito
+            sleep 8  # lascia tempo al container di rispondere
+            ./deploy/smoke-test.sh
+
+      - name: Rollback on smoke fail
+        if: failure()
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            set -e
+            cd /home/deploy/meccanicosubito
+            IMAGE="${{ needs.build-and-push.outputs.image_lower }}"
+            if docker image inspect "$IMAGE:previous" >/dev/null 2>&1; then
+              echo "Rolling back to :previous"
+              docker tag "$IMAGE:previous" "$IMAGE:latest"
+              set -a && source .env.production && set +a
+              docker compose up -d --no-build
+              echo "Rollback complete."
+            else
+              echo "No :previous image to roll back to. Manual intervention required."
+              exit 1
+            fi

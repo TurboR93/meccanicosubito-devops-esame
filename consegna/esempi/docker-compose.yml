@@ -1,0 +1,60 @@
+# docker-compose.yml — orchestrazione del container Next.js sul VPS.
+# Uso:
+#   1. Copia .env.production.example in .env.production e compila i valori.
+#   2. docker compose up -d --build
+#
+# Il container espone la porta 3000 SOLO su 127.0.0.1 — Nginx (host) fa il
+# reverse proxy. Non esponiamo la 3000 pubblica per evitare bypass di Nginx.
+
+services:
+  web:
+    # Immagine COSTRUITA LOCALMENTE dal Mac (deploy/deploy-local.sh) e caricata sul
+    # VPS via `docker save | ssh docker load` — nessun pull/push su GHCR (GitHub Actions
+    # rimosso il 2026-06-02). Il tag ghcr.io/... è solo un NOME locale, non un registry.
+    # Tag :latest = release corrente; :previous = backup per rollback. Il deploy gira
+    # `docker compose up -d --no-build` (usa l'immagine già caricata); il blocco `build:`
+    # sotto resta come fallback per build locale/dev (`docker compose up -d --build`).
+    image: ghcr.io/turbor93/meccanicosubito:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Le NEXT_PUBLIC_* sono bake-ate nel bundle: vanno passate al build.
+        NEXT_PUBLIC_DATA_SOURCE: ${NEXT_PUBLIC_DATA_SOURCE:-supabase}
+        NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
+        NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY}
+        # SHA del commit deployato — esposto da /api/health. Settato dal CI o
+        # manualmente con `NEXT_PUBLIC_COMMIT_SHA=$(git rev-parse HEAD) docker compose up -d --build`
+        NEXT_PUBLIC_COMMIT_SHA: ${NEXT_PUBLIC_COMMIT_SHA:-}
+        NEXT_PUBLIC_BUILD_TIME: ${NEXT_PUBLIC_BUILD_TIME:-}
+        # SEO + analytics: dominio canonico + container Google Tag Manager.
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://meccanicosubito.it}
+        NEXT_PUBLIC_GTM_ID: ${NEXT_PUBLIC_GTM_ID:-}
+        # Stripe + flag caparra: NEXT_PUBLIC_* usate dal Payment Element lato client
+        # (vedi memoria `payments_live_state.md`). Devono finire nel bundle al build,
+        # altrimenti Next.js fa dead-code elimination dei check `if (!key) throw`.
+        NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:-}
+        NEXT_PUBLIC_STRIPE_BNPL_MIN_AMOUNT_CENTS: ${NEXT_PUBLIC_STRIPE_BNPL_MIN_AMOUNT_CENTS:-15000}
+        NEXT_PUBLIC_DEPOSIT_ENABLED: ${NEXT_PUBLIC_DEPOSIT_ENABLED:-false}
+        # Sentry error tracking: DSN baked nel bundle (vuota = Sentry spento).
+        # Il token di upload source maps NON passa da qui (build secret in deploy-local.sh).
+        NEXT_PUBLIC_SENTRY_DSN: ${NEXT_PUBLIC_SENTRY_DSN:-}
+        NEXT_PUBLIC_SENTRY_ENVIRONMENT: ${NEXT_PUBLIC_SENTRY_ENVIRONMENT:-}
+    container_name: meccanicosubito-web
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    ports:
+      - "127.0.0.1:3000:3000"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:3000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    # P1.2 — log rotation: max 30 MB di log totali per container (3 file × 10 MB).
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

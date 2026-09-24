@@ -1,0 +1,29 @@
+# Verifica Sentry in produzione — 15/09/2026
+# (comandi eseguiti da Riccardo dopo il deploy con l'integrazione Sentry)
+
+$ curl -s https://meccanicosubito.it/api/health
+{"status":"ok","commit":"300161757fb7fcaffdc53b043b53c365f83be94f","builtAt":"2026-09-15T08:44:46Z"}
+
+$ curl -s -o /dev/null -w "senza token: %{http_code}\n" https://meccanicosubito.it/api/debug-sentry
+senza token: 404
+
+$ curl -s -o /dev/null -w "token errato: %{http_code}\n" "https://meccanicosubito.it/api/debug-sentry?token=sbagliato"
+token errato: 404
+
+$ curl -s -o /dev/null -w "token giusto: %{http_code}\n" "https://meccanicosubito.it/api/debug-sentry?token=$SENTRY_TEST_TOKEN"
+token giusto: 500
+
+# Esito su Sentry (org hautomatico, progetto meccanicosubito)
+- Issue MECCANICOSUBITO-2 — "Error: Sentry debug: errore di test simulato (2026-09-15T08:49:52.000Z)"
+- environment: production · release: 300161757fb7 (= commit di /api/health) · runtime: node v20.20.2
+- mechanism: auto.function.nextjs.route_handler · handled: false
+- stack trace risolto con source map: src/app/api/debug-sentry/route.ts:31
+- query string: token = [Filtered] → il secret non viene inviato a Sentry
+- release 300161757fb7: crash free session rate 100%
+
+# Screenshot (ritagliati; originali in screenshot/originali/)
+- screenshot/sentry-01-issues-production.png   lista Issues, filtro production 24H
+- screenshot/sentry-02-evento-production.png   dettaglio evento con tag release/environment
+- screenshot/sentry-03-stack-trace.png         stack trace con source map
+- screenshot/sentry-04-release.png             release 300161757fb7
+- screenshot/sentry-05-token-filtrato.png      HTTP Request con token [Filtered]

@@ -1,0 +1,11 @@
+{
+  "checked_at_utc": "2026-09-23T20:36:38.680167+00:00",
+  "url": "https://meccanicosubito.it/api/health",
+  "http_status": 200,
+  "cache_control": "no-store, max-age=0",
+  "body": {
+    "status": "ok",
+    "commit": "756d161ce5c190df470e9196639d82ffe4178e9f",
+    "builtAt": "2026-09-22T14:11:26Z"
+  }
+}

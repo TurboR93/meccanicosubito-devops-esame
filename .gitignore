@@ -1,0 +1,36 @@
+# Repository documentale dell’esame: lista esplicita dei soli file pubblicabili.
+# Tutta la copia locale dell’app e ogni altro file restano esclusi da Git.
+*
+!*/
+!/README.md
+!/LEGGIMI-ESAME.md
+!/.gitignore
+!/consegna/README-DEVOPS.md
+!/consegna/presentazione.html
+!/consegna/presentazione-meccanicosubito-devops.pdf
+!/consegna/rigenera-pdf.sh
+!/consegna/assets/logo-hautomatico.png
+!/consegna/evidenze/01-env-history.txt
+!/consegna/evidenze/02-github-secrets.txt
+!/consegna/evidenze/03-github-actions-runs.tsv
+!/consegna/evidenze/04-log-masking.txt
+!/consegna/evidenze/05-produzione-health.txt
+!/consegna/evidenze/06-sentry-verifica.txt
+!/consegna/evidenze/08-ci-storica-verificata.json
+!/consegna/evidenze/09-cd-storica-verificata.json
+!/consegna/evidenze/10-produzione-health-attuale.json
+!/consegna/evidenze/11-uptimerobot-stato.md
+!/consegna/screenshot/sentry-01-issues-production.png
+!/consegna/screenshot/sentry-02-evento-production.png
+!/consegna/screenshot/sentry-03-stack-trace.png
+!/consegna/screenshot/sentry-04-release.png
+!/consegna/screenshot/sentry-05-token-filtrato.png
+!/consegna/screenshot/sito-live-health.png
+!/consegna/screenshot/sito-live-home.png
+!/consegna/workflows-storici/ci.yml
+!/consegna/workflows-storici/deploy-pages.yml
+!/consegna/workflows-storici/deploy.yml
+!/consegna/esempi/.dockerignore
+!/consegna/esempi/Dockerfile
+!/consegna/esempi/README.md
+!/consegna/esempi/docker-compose.yml

@@ -1,0 +1,255 @@
+# Storico run GitHub Actions — 2026-09-14 12:03
+## Totali per workflow / esito
+CI	cancelled	1
+CI	failure	5
+CI	success	101
+Deploy GitHub Pages	failure	1
+Deploy GitHub Pages	success	20
+Deploy production	cancelled	1
+Deploy production	failure	56
+Deploy production	skipped	6
+Deploy production	success	47
+pages-build-deployment	success	3
+
+## Tutte le run (data, workflow, evento, branch, esito, sha, url)
+2026-06-02T16:31:20Z	Deploy production	push	main	failure	bca78e1	https://github.com/TurboR93/meccanicosubito/actions/runs/26833635113
+2026-06-02T16:31:20Z	CI	push	main	success	bca78e1	https://github.com/TurboR93/meccanicosubito/actions/runs/26833635111
+2026-05-30T09:50:32Z	Deploy production	push	main	success	e3b58b1	https://github.com/TurboR93/meccanicosubito/actions/runs/26680816310
+2026-05-30T09:50:32Z	CI	push	main	success	e3b58b1	https://github.com/TurboR93/meccanicosubito/actions/runs/26680816307
+2026-05-27T06:11:49Z	Deploy production	push	main	success	0a9f927	https://github.com/TurboR93/meccanicosubito/actions/runs/26494173265
+2026-05-27T06:11:49Z	CI	push	main	success	0a9f927	https://github.com/TurboR93/meccanicosubito/actions/runs/26494173231
+2026-05-22T10:11:49Z	CI	push	main	success	acbd587	https://github.com/TurboR93/meccanicosubito/actions/runs/26281811269
+2026-05-22T10:11:49Z	Deploy production	push	main	success	acbd587	https://github.com/TurboR93/meccanicosubito/actions/runs/26281811235
+2026-05-22T09:23:17Z	CI	push	main	success	9584425	https://github.com/TurboR93/meccanicosubito/actions/runs/26279613944
+2026-05-22T09:23:17Z	Deploy production	push	main	success	9584425	https://github.com/TurboR93/meccanicosubito/actions/runs/26279613942
+2026-05-22T09:01:03Z	CI	push	main	success	cad24f6	https://github.com/TurboR93/meccanicosubito/actions/runs/26278604983
+2026-05-22T09:01:03Z	Deploy production	push	main	success	cad24f6	https://github.com/TurboR93/meccanicosubito/actions/runs/26278604982
+2026-05-22T08:37:08Z	Deploy production	push	main	success	6043b0a	https://github.com/TurboR93/meccanicosubito/actions/runs/26277515479
+2026-05-22T08:37:08Z	CI	push	main	success	6043b0a	https://github.com/TurboR93/meccanicosubito/actions/runs/26277515478
+2026-05-22T08:26:07Z	Deploy production	push	main	success	432929f	https://github.com/TurboR93/meccanicosubito/actions/runs/26277031634
+2026-05-22T08:26:07Z	CI	push	main	success	432929f	https://github.com/TurboR93/meccanicosubito/actions/runs/26277031633
+2026-05-21T20:14:48Z	Deploy production	push	main	success	141bc37	https://github.com/TurboR93/meccanicosubito/actions/runs/26250584281
+2026-05-21T20:14:48Z	CI	push	main	success	141bc37	https://github.com/TurboR93/meccanicosubito/actions/runs/26250584254
+2026-05-20T16:24:32Z	Deploy production	push	main	success	53b6a29	https://github.com/TurboR93/meccanicosubito/actions/runs/26175668446
+2026-05-20T16:24:32Z	CI	push	main	success	53b6a29	https://github.com/TurboR93/meccanicosubito/actions/runs/26175668398
+2026-05-20T16:01:54Z	CI	push	main	success	0cb46e1	https://github.com/TurboR93/meccanicosubito/actions/runs/26174472554
+2026-05-20T16:01:54Z	Deploy production	push	main	success	0cb46e1	https://github.com/TurboR93/meccanicosubito/actions/runs/26174472551
+2026-05-20T15:28:50Z	Deploy production	push	main	success	b0babc3	https://github.com/TurboR93/meccanicosubito/actions/runs/26172610087
+2026-05-20T15:28:50Z	CI	push	main	success	b0babc3	https://github.com/TurboR93/meccanicosubito/actions/runs/26172609867
+2026-05-20T12:46:51Z	CI	push	main	success	0564378	https://github.com/TurboR93/meccanicosubito/actions/runs/26163460990
+2026-05-20T12:46:51Z	Deploy production	push	main	success	0564378	https://github.com/TurboR93/meccanicosubito/actions/runs/26163460902
+2026-05-20T12:39:29Z	Deploy production	workflow_dispatch	main	success	d9a992b	https://github.com/TurboR93/meccanicosubito/actions/runs/26163076516
+2026-05-20T12:21:53Z	Deploy production	push	main	success	d9a992b	https://github.com/TurboR93/meccanicosubito/actions/runs/26162180503
+2026-05-20T12:21:53Z	CI	push	main	success	d9a992b	https://github.com/TurboR93/meccanicosubito/actions/runs/26162180388
+2026-05-20T12:15:02Z	Deploy production	workflow_dispatch	main	success	42693b7	https://github.com/TurboR93/meccanicosubito/actions/runs/26161846823
+2026-05-20T12:01:58Z	Deploy production	workflow_dispatch	main	success	42693b7	https://github.com/TurboR93/meccanicosubito/actions/runs/26161204786
+2026-05-20T11:57:55Z	Deploy production	workflow_dispatch	main	cancelled	42693b7	https://github.com/TurboR93/meccanicosubito/actions/runs/26160997912
+2026-05-20T11:54:53Z	Deploy production	workflow_dispatch	main	success	42693b7	https://github.com/TurboR93/meccanicosubito/actions/runs/26160849774
+2026-05-20T11:40:39Z	Deploy production	workflow_dispatch	main	success	42693b7	https://github.com/TurboR93/meccanicosubito/actions/runs/26160167331
+2026-05-20T11:21:42Z	Deploy production	push	main	success	42693b7	https://github.com/TurboR93/meccanicosubito/actions/runs/26159257111
+2026-05-20T11:21:41Z	CI	push	main	success	42693b7	https://github.com/TurboR93/meccanicosubito/actions/runs/26159257068
+2026-05-19T06:58:22Z	CI	push	main	success	caaa062	https://github.com/TurboR93/meccanicosubito/actions/runs/26081564975
+2026-05-19T06:58:22Z	Deploy production	push	main	success	caaa062	https://github.com/TurboR93/meccanicosubito/actions/runs/26081564963
+2026-05-19T06:56:38Z	CI	pull_request	landingpage-seo	success	caaa062	https://github.com/TurboR93/meccanicosubito/actions/runs/26081487729
+2026-05-18T18:46:07Z	CI	push	main	success	7cadd00	https://github.com/TurboR93/meccanicosubito/actions/runs/26053425487
+2026-05-18T18:46:01Z	Deploy production	push	main	success	7cadd00	https://github.com/TurboR93/meccanicosubito/actions/runs/26053420361
+2026-05-15T19:23:06Z	CI	push	main	success	ed24d59	https://github.com/TurboR93/meccanicosubito/actions/runs/25936961453
+2026-05-15T19:23:06Z	Deploy production	push	main	success	ed24d59	https://github.com/TurboR93/meccanicosubito/actions/runs/25936961452
+2026-05-15T18:11:27Z	CI	push	main	success	1d20ab9	https://github.com/TurboR93/meccanicosubito/actions/runs/25933779158
+2026-05-15T18:11:27Z	Deploy production	push	main	success	1d20ab9	https://github.com/TurboR93/meccanicosubito/actions/runs/25933779156
+2026-05-15T17:40:35Z	Deploy production	push	main	success	5924a42	https://github.com/TurboR93/meccanicosubito/actions/runs/25932373024
+2026-05-15T17:40:35Z	CI	push	main	success	5924a42	https://github.com/TurboR93/meccanicosubito/actions/runs/25932372998
+2026-05-15T16:10:28Z	CI	push	main	success	49d59b2	https://github.com/TurboR93/meccanicosubito/actions/runs/25928229217
+2026-05-15T16:10:28Z	Deploy production	push	main	success	49d59b2	https://github.com/TurboR93/meccanicosubito/actions/runs/25928229213
+2026-05-14T15:57:59Z	Deploy production	push	main	success	fa8cd27	https://github.com/TurboR93/meccanicosubito/actions/runs/25870407250
+2026-05-14T15:57:59Z	CI	push	main	success	fa8cd27	https://github.com/TurboR93/meccanicosubito/actions/runs/25870407210
+2026-05-14T14:58:50Z	CI	push	main	success	04f37ba	https://github.com/TurboR93/meccanicosubito/actions/runs/25867328893
+2026-05-14T14:58:50Z	Deploy production	push	main	success	04f37ba	https://github.com/TurboR93/meccanicosubito/actions/runs/25867328852
+2026-05-13T19:30:01Z	CI	push	main	success	2ea7e04	https://github.com/TurboR93/meccanicosubito/actions/runs/25821629031
+2026-05-13T19:30:01Z	Deploy production	push	main	success	2ea7e04	https://github.com/TurboR93/meccanicosubito/actions/runs/25821628980
+2026-05-13T19:06:09Z	Deploy production	push	main	success	173fe3e	https://github.com/TurboR93/meccanicosubito/actions/runs/25820436301
+2026-05-13T19:06:09Z	CI	push	main	success	173fe3e	https://github.com/TurboR93/meccanicosubito/actions/runs/25820436291
+2026-05-13T18:03:13Z	Deploy production	push	main	success	6ff5193	https://github.com/TurboR93/meccanicosubito/actions/runs/25817213337
+2026-05-13T18:03:13Z	CI	push	main	success	6ff5193	https://github.com/TurboR93/meccanicosubito/actions/runs/25817213323
+2026-05-13T16:58:11Z	CI	push	main	success	bf472de	https://github.com/TurboR93/meccanicosubito/actions/runs/25813858366
+2026-05-13T16:58:11Z	Deploy production	push	main	success	bf472de	https://github.com/TurboR93/meccanicosubito/actions/runs/25813858361
+2026-05-13T16:00:03Z	Deploy production	push	main	success	41ccf98	https://github.com/TurboR93/meccanicosubito/actions/runs/25810776506
+2026-05-13T16:00:03Z	CI	push	main	success	41ccf98	https://github.com/TurboR93/meccanicosubito/actions/runs/25810776503
+2026-05-13T14:57:09Z	CI	push	main	success	b51d4e6	https://github.com/TurboR93/meccanicosubito/actions/runs/25807218449
+2026-05-13T14:57:09Z	Deploy production	push	main	success	b51d4e6	https://github.com/TurboR93/meccanicosubito/actions/runs/25807218418
+2026-05-13T11:42:20Z	Deploy production	push	main	success	e65fb84	https://github.com/TurboR93/meccanicosubito/actions/runs/25796892781
+2026-05-13T11:42:19Z	CI	push	main	success	e65fb84	https://github.com/TurboR93/meccanicosubito/actions/runs/25796892744
+2026-05-13T10:16:01Z	CI	push	main	success	d819266	https://github.com/TurboR93/meccanicosubito/actions/runs/25792834714
+2026-05-13T10:16:01Z	Deploy production	push	main	success	d819266	https://github.com/TurboR93/meccanicosubito/actions/runs/25792834687
+2026-05-13T09:33:21Z	Deploy production	push	main	success	90bd548	https://github.com/TurboR93/meccanicosubito/actions/runs/25790776590
+2026-05-13T09:33:21Z	CI	push	main	success	90bd548	https://github.com/TurboR93/meccanicosubito/actions/runs/25790776578
+2026-05-13T08:29:29Z	Deploy production	push	main	success	ae286e2	https://github.com/TurboR93/meccanicosubito/actions/runs/25787673804
+2026-05-13T08:29:29Z	CI	push	main	success	ae286e2	https://github.com/TurboR93/meccanicosubito/actions/runs/25787673774
+2026-05-13T07:27:49Z	Deploy production	push	main	success	e86e17b	https://github.com/TurboR93/meccanicosubito/actions/runs/25784868673
+2026-05-13T07:27:49Z	CI	push	main	success	e86e17b	https://github.com/TurboR93/meccanicosubito/actions/runs/25784868672
+2026-05-13T07:27:06Z	CI	push	main	failure	2cc8ad7	https://github.com/TurboR93/meccanicosubito/actions/runs/25784837319
+2026-05-13T07:27:06Z	Deploy production	push	main	failure	2cc8ad7	https://github.com/TurboR93/meccanicosubito/actions/runs/25784837291
+2026-05-13T07:08:46Z	Deploy production	push	main	success	10da08e	https://github.com/TurboR93/meccanicosubito/actions/runs/25784052050
+2026-05-13T07:08:46Z	CI	push	main	success	10da08e	https://github.com/TurboR93/meccanicosubito/actions/runs/25784052006
+2026-05-13T06:51:49Z	Deploy production	push	main	success	7b7aff4	https://github.com/TurboR93/meccanicosubito/actions/runs/25783351636
+2026-05-13T06:51:49Z	CI	push	main	success	7b7aff4	https://github.com/TurboR93/meccanicosubito/actions/runs/25783351608
+2026-05-13T06:41:50Z	Deploy production	push	main	success	52d4292	https://github.com/TurboR93/meccanicosubito/actions/runs/25782959909
+2026-05-13T06:41:50Z	CI	push	main	success	52d4292	https://github.com/TurboR93/meccanicosubito/actions/runs/25782959895
+2026-05-13T06:12:17Z	CI	push	main	success	c4d897d	https://github.com/TurboR93/meccanicosubito/actions/runs/25781837110
+2026-05-13T06:12:17Z	Deploy production	push	main	success	c4d897d	https://github.com/TurboR93/meccanicosubito/actions/runs/25781837108
+2026-05-13T05:41:11Z	CI	push	main	success	270e6fb	https://github.com/TurboR93/meccanicosubito/actions/runs/25780716505
+2026-05-13T05:41:11Z	Deploy production	push	main	success	270e6fb	https://github.com/TurboR93/meccanicosubito/actions/runs/25780716482
+2026-05-12T18:06:29Z	CI	push	main	success	1208a24	https://github.com/TurboR93/meccanicosubito/actions/runs/25753001949
+2026-05-12T18:06:29Z	Deploy production	push	main	success	1208a24	https://github.com/TurboR93/meccanicosubito/actions/runs/25753001913
+2026-05-12T18:04:25Z	Deploy production	push	main	success	e7dfd01	https://github.com/TurboR93/meccanicosubito/actions/runs/25752891246
+2026-05-12T18:04:25Z	CI	push	main	cancelled	e7dfd01	https://github.com/TurboR93/meccanicosubito/actions/runs/25752891231
+2026-05-12T16:27:26Z	Deploy production	push	main	success	948dd6d	https://github.com/TurboR93/meccanicosubito/actions/runs/25747822835
+2026-05-12T16:27:26Z	CI	push	main	success	948dd6d	https://github.com/TurboR93/meccanicosubito/actions/runs/25747822818
+2026-05-12T15:15:42Z	CI	push	main	success	099977c	https://github.com/TurboR93/meccanicosubito/actions/runs/25743815273
+2026-05-12T15:15:42Z	Deploy production	push	main	success	099977c	https://github.com/TurboR93/meccanicosubito/actions/runs/25743815149
+2026-05-12T14:13:10Z	Deploy production	push	main	failure	d41a21d	https://github.com/TurboR93/meccanicosubito/actions/runs/25740163157
+2026-05-12T14:13:10Z	CI	push	main	success	d41a21d	https://github.com/TurboR93/meccanicosubito/actions/runs/25740163129
+2026-05-12T12:15:18Z	Deploy production	push	main	failure	2bcf4de	https://github.com/TurboR93/meccanicosubito/actions/runs/25733757817
+2026-05-12T12:15:18Z	CI	push	main	success	2bcf4de	https://github.com/TurboR93/meccanicosubito/actions/runs/25733757784
+2026-05-12T11:25:17Z	CI	push	main	success	86cd67d	https://github.com/TurboR93/meccanicosubito/actions/runs/25731348741
+2026-05-12T11:25:17Z	Deploy production	push	main	failure	86cd67d	https://github.com/TurboR93/meccanicosubito/actions/runs/25731348739
+2026-05-11T21:52:00Z	CI	push	main	success	587b506	https://github.com/TurboR93/meccanicosubito/actions/runs/25699475494
+2026-05-11T21:51:59Z	Deploy production	push	main	failure	587b506	https://github.com/TurboR93/meccanicosubito/actions/runs/25699475486
+2026-05-11T18:08:19Z	CI	push	main	success	9499a50	https://github.com/TurboR93/meccanicosubito/actions/runs/25688294057
+2026-05-11T18:08:19Z	Deploy production	push	main	failure	9499a50	https://github.com/TurboR93/meccanicosubito/actions/runs/25688293928
+2026-05-11T16:38:00Z	CI	push	main	success	84bdb05	https://github.com/TurboR93/meccanicosubito/actions/runs/25683571625
+2026-05-11T16:38:00Z	Deploy production	push	main	failure	84bdb05	https://github.com/TurboR93/meccanicosubito/actions/runs/25683571447
+2026-05-11T16:11:37Z	Deploy production	push	main	failure	2a19935	https://github.com/TurboR93/meccanicosubito/actions/runs/25682161448
+2026-05-11T16:11:36Z	CI	push	main	success	2a19935	https://github.com/TurboR93/meccanicosubito/actions/runs/25682160262
+2026-05-11T15:34:32Z	Deploy production	push	main	failure	c8146e4	https://github.com/TurboR93/meccanicosubito/actions/runs/25680109454
+2026-05-11T15:34:32Z	CI	push	main	success	c8146e4	https://github.com/TurboR93/meccanicosubito/actions/runs/25680109413
+2026-05-11T15:23:53Z	Deploy production	push	main	failure	60e8f20	https://github.com/TurboR93/meccanicosubito/actions/runs/25679512802
+2026-05-11T15:23:52Z	CI	push	main	success	60e8f20	https://github.com/TurboR93/meccanicosubito/actions/runs/25679511975
+2026-05-11T14:53:21Z	Deploy production	push	main	failure	3ab8598	https://github.com/TurboR93/meccanicosubito/actions/runs/25677769425
+2026-05-11T14:53:21Z	CI	push	main	success	3ab8598	https://github.com/TurboR93/meccanicosubito/actions/runs/25677769404
+2026-05-11T14:44:31Z	CI	push	main	success	dbf124e	https://github.com/TurboR93/meccanicosubito/actions/runs/25677269695
+2026-05-11T14:44:30Z	Deploy production	push	main	failure	dbf124e	https://github.com/TurboR93/meccanicosubito/actions/runs/25677268579
+2026-05-11T14:01:53Z	CI	push	main	success	81ff5cc	https://github.com/TurboR93/meccanicosubito/actions/runs/25674970327
+2026-05-11T14:01:53Z	Deploy production	push	main	failure	81ff5cc	https://github.com/TurboR93/meccanicosubito/actions/runs/25674970233
+2026-05-11T13:39:07Z	Deploy production	push	main	failure	5c0171e	https://github.com/TurboR93/meccanicosubito/actions/runs/25673731824
+2026-05-11T13:39:07Z	CI	push	main	success	5c0171e	https://github.com/TurboR93/meccanicosubito/actions/runs/25673731771
+2026-05-11T12:43:18Z	Deploy production	push	main	failure	5d58450	https://github.com/TurboR93/meccanicosubito/actions/runs/25670840464
+2026-05-11T12:43:18Z	CI	push	main	success	5d58450	https://github.com/TurboR93/meccanicosubito/actions/runs/25670840394
+2026-05-11T07:33:51Z	CI	push	main	success	9de878b	https://github.com/TurboR93/meccanicosubito/actions/runs/25656664793
+2026-05-11T07:33:51Z	Deploy production	push	main	failure	9de878b	https://github.com/TurboR93/meccanicosubito/actions/runs/25656664781
+2026-05-11T06:20:25Z	Deploy production	push	main	failure	1c9c5a8	https://github.com/TurboR93/meccanicosubito/actions/runs/25653791250
+2026-05-11T06:20:25Z	CI	push	main	success	1c9c5a8	https://github.com/TurboR93/meccanicosubito/actions/runs/25653791238
+2026-05-11T05:40:47Z	CI	push	main	success	1b931f0	https://github.com/TurboR93/meccanicosubito/actions/runs/25652467093
+2026-05-11T05:40:47Z	Deploy production	push	main	failure	1b931f0	https://github.com/TurboR93/meccanicosubito/actions/runs/25652467092
+2026-05-11T05:07:51Z	Deploy production	push	main	failure	949dc5c	https://github.com/TurboR93/meccanicosubito/actions/runs/25651474436
+2026-05-11T05:07:51Z	CI	push	main	success	949dc5c	https://github.com/TurboR93/meccanicosubito/actions/runs/25651474433
+2026-05-10T22:08:11Z	CI	push	main	success	4896f87	https://github.com/TurboR93/meccanicosubito/actions/runs/25641082360
+2026-05-10T22:08:11Z	Deploy production	push	main	failure	4896f87	https://github.com/TurboR93/meccanicosubito/actions/runs/25641082350
+2026-05-10T21:02:58Z	Deploy production	push	main	failure	5d20be1	https://github.com/TurboR93/meccanicosubito/actions/runs/25639714691
+2026-05-10T21:02:58Z	CI	push	main	success	5d20be1	https://github.com/TurboR93/meccanicosubito/actions/runs/25639714688
+2026-05-10T20:31:26Z	CI	push	main	success	0768f8d	https://github.com/TurboR93/meccanicosubito/actions/runs/25639042722
+2026-05-10T20:31:26Z	Deploy production	push	main	failure	0768f8d	https://github.com/TurboR93/meccanicosubito/actions/runs/25639042711
+2026-05-10T20:22:52Z	CI	push	main	success	e5369f8	https://github.com/TurboR93/meccanicosubito/actions/runs/25638854358
+2026-05-10T20:22:52Z	Deploy production	push	main	failure	e5369f8	https://github.com/TurboR93/meccanicosubito/actions/runs/25638854326
+2026-05-10T20:07:32Z	Deploy production	push	main	failure	85a4495	https://github.com/TurboR93/meccanicosubito/actions/runs/25638527988
+2026-05-10T20:07:32Z	CI	push	main	success	85a4495	https://github.com/TurboR93/meccanicosubito/actions/runs/25638527983
+2026-05-10T19:55:15Z	CI	push	main	success	8612816	https://github.com/TurboR93/meccanicosubito/actions/runs/25638255746
+2026-05-10T19:55:15Z	Deploy production	push	main	failure	8612816	https://github.com/TurboR93/meccanicosubito/actions/runs/25638255741
+2026-05-10T16:37:49Z	CI	push	main	success	f07c787	https://github.com/TurboR93/meccanicosubito/actions/runs/25634053733
+2026-05-10T16:37:49Z	Deploy production	push	main	failure	f07c787	https://github.com/TurboR93/meccanicosubito/actions/runs/25634053729
+2026-05-10T15:08:17Z	Deploy production	push	main	failure	43b45e1	https://github.com/TurboR93/meccanicosubito/actions/runs/25632109883
+2026-05-10T15:08:17Z	CI	push	main	success	43b45e1	https://github.com/TurboR93/meccanicosubito/actions/runs/25632109882
+2026-05-10T09:56:38Z	Deploy production	push	main	failure	4dc83f2	https://github.com/TurboR93/meccanicosubito/actions/runs/25625757770
+2026-05-10T09:56:38Z	CI	push	main	success	4dc83f2	https://github.com/TurboR93/meccanicosubito/actions/runs/25625757759
+2026-05-10T09:45:23Z	CI	push	main	success	9b43f33	https://github.com/TurboR93/meccanicosubito/actions/runs/25625541724
+2026-05-10T09:45:23Z	Deploy production	push	main	failure	9b43f33	https://github.com/TurboR93/meccanicosubito/actions/runs/25625541718
+2026-05-10T09:25:29Z	CI	push	main	success	da58d3d	https://github.com/TurboR93/meccanicosubito/actions/runs/25625152790
+2026-05-10T09:25:29Z	Deploy production	push	main	failure	da58d3d	https://github.com/TurboR93/meccanicosubito/actions/runs/25625152787
+2026-05-10T09:13:31Z	CI	push	main	success	7f69788	https://github.com/TurboR93/meccanicosubito/actions/runs/25624923778
+2026-05-10T09:13:31Z	Deploy production	push	main	failure	7f69788	https://github.com/TurboR93/meccanicosubito/actions/runs/25624923768
+2026-05-10T08:55:12Z	CI	push	main	success	73ea3d6	https://github.com/TurboR93/meccanicosubito/actions/runs/25624568281
+2026-05-10T08:55:11Z	Deploy production	push	main	failure	73ea3d6	https://github.com/TurboR93/meccanicosubito/actions/runs/25624568266
+2026-05-10T08:35:26Z	Deploy production	push	main	failure	b138ec6	https://github.com/TurboR93/meccanicosubito/actions/runs/25624183978
+2026-05-10T08:35:26Z	CI	push	main	success	b138ec6	https://github.com/TurboR93/meccanicosubito/actions/runs/25624183964
+2026-05-10T08:24:15Z	CI	push	main	success	a564cb7	https://github.com/TurboR93/meccanicosubito/actions/runs/25623968940
+2026-05-10T08:24:15Z	Deploy production	push	main	failure	a564cb7	https://github.com/TurboR93/meccanicosubito/actions/runs/25623968936
+2026-05-10T07:44:22Z	Deploy production	push	main	failure	9959de2	https://github.com/TurboR93/meccanicosubito/actions/runs/25623211806
+2026-05-10T07:44:22Z	CI	push	main	success	9959de2	https://github.com/TurboR93/meccanicosubito/actions/runs/25623211791
+2026-05-09T22:01:12Z	CI	push	main	success	b46cf9b	https://github.com/TurboR93/meccanicosubito/actions/runs/25612893812
+2026-05-09T22:01:12Z	Deploy production	push	main	failure	b46cf9b	https://github.com/TurboR93/meccanicosubito/actions/runs/25612893805
+2026-05-09T21:32:20Z	CI	push	main	success	de41fdb	https://github.com/TurboR93/meccanicosubito/actions/runs/25612326430
+2026-05-09T21:32:20Z	Deploy production	push	main	failure	de41fdb	https://github.com/TurboR93/meccanicosubito/actions/runs/25612326428
+2026-05-09T21:04:49Z	Deploy production	push	main	failure	2136555	https://github.com/TurboR93/meccanicosubito/actions/runs/25611786202
+2026-05-09T21:04:49Z	CI	push	main	success	2136555	https://github.com/TurboR93/meccanicosubito/actions/runs/25611786199
+2026-05-09T20:48:15Z	CI	push	main	success	e9ad515	https://github.com/TurboR93/meccanicosubito/actions/runs/25611452581
+2026-05-09T20:48:15Z	Deploy production	push	main	failure	e9ad515	https://github.com/TurboR93/meccanicosubito/actions/runs/25611452567
+2026-05-09T20:14:54Z	CI	push	main	success	b483b55	https://github.com/TurboR93/meccanicosubito/actions/runs/25610768946
+2026-05-09T20:14:54Z	Deploy production	push	main	failure	b483b55	https://github.com/TurboR93/meccanicosubito/actions/runs/25610768939
+2026-05-09T19:50:15Z	CI	push	main	success	30c3f7d	https://github.com/TurboR93/meccanicosubito/actions/runs/25610268320
+2026-05-09T19:50:15Z	Deploy production	push	main	failure	30c3f7d	https://github.com/TurboR93/meccanicosubito/actions/runs/25610268305
+2026-05-09T19:40:09Z	Deploy production	push	main	failure	6a5efab	https://github.com/TurboR93/meccanicosubito/actions/runs/25610054413
+2026-05-09T19:40:09Z	CI	push	main	failure	6a5efab	https://github.com/TurboR93/meccanicosubito/actions/runs/25610054412
+2026-05-09T18:50:15Z	CI	push	main	failure	bad2d8a	https://github.com/TurboR93/meccanicosubito/actions/runs/25609063255
+2026-05-09T18:50:15Z	Deploy production	push	main	failure	bad2d8a	https://github.com/TurboR93/meccanicosubito/actions/runs/25609063253
+2026-05-09T18:40:22Z	CI	pull_request	feat/workshop-slug-code	failure	012652a	https://github.com/TurboR93/meccanicosubito/actions/runs/25608856512
+2026-05-09T18:39:31Z	Deploy production	push	main	failure	99d673e	https://github.com/TurboR93/meccanicosubito/actions/runs/25608838156
+2026-05-09T18:39:31Z	CI	push	main	success	99d673e	https://github.com/TurboR93/meccanicosubito/actions/runs/25608838152
+2026-05-09T18:38:41Z	CI	pull_request	feat/workshop-slug-code	failure	012652a	https://github.com/TurboR93/meccanicosubito/actions/runs/25608820397
+2026-05-09T18:37:00Z	CI	pull_request	feat/workshop-slug-migration	success	311074e	https://github.com/TurboR93/meccanicosubito/actions/runs/25608786336
+2026-05-09T18:00:33Z	CI	push	main	success	7b539ee	https://github.com/TurboR93/meccanicosubito/actions/runs/25608006646
+2026-05-09T18:00:33Z	Deploy production	push	main	failure	7b539ee	https://github.com/TurboR93/meccanicosubito/actions/runs/25608006645
+2026-05-09T17:58:17Z	CI	push	main	success	6aa89ad	https://github.com/TurboR93/meccanicosubito/actions/runs/25607954868
+2026-05-09T17:58:17Z	Deploy production	push	main	failure	6aa89ad	https://github.com/TurboR93/meccanicosubito/actions/runs/25607954866
+2026-05-09T17:00:39Z	CI	push	main	success	c419dfa	https://github.com/TurboR93/meccanicosubito/actions/runs/25606670389
+2026-05-09T17:00:39Z	Deploy production	push	main	failure	c419dfa	https://github.com/TurboR93/meccanicosubito/actions/runs/25606670384
+2026-05-09T16:26:29Z	CI	push	main	success	b2f488e	https://github.com/TurboR93/meccanicosubito/actions/runs/25605959981
+2026-05-09T16:26:29Z	Deploy production	push	main	failure	b2f488e	https://github.com/TurboR93/meccanicosubito/actions/runs/25605959975
+2026-05-09T14:47:11Z	Deploy production	push	main	failure	3135d45	https://github.com/TurboR93/meccanicosubito/actions/runs/25603896385
+2026-05-09T14:47:11Z	CI	push	main	success	3135d45	https://github.com/TurboR93/meccanicosubito/actions/runs/25603896384
+2026-05-09T14:43:30Z	CI	push	main	success	0c97050	https://github.com/TurboR93/meccanicosubito/actions/runs/25603821178
+2026-05-09T14:43:30Z	Deploy production	push	main	failure	0c97050	https://github.com/TurboR93/meccanicosubito/actions/runs/25603821173
+2026-05-09T14:03:31Z	Deploy production	push	main	failure	4506f3c	https://github.com/TurboR93/meccanicosubito/actions/runs/25603008878
+2026-05-09T14:03:31Z	CI	push	main	success	4506f3c	https://github.com/TurboR93/meccanicosubito/actions/runs/25603008877
+2026-05-09T13:58:35Z	CI	push	main	success	7b7f353	https://github.com/TurboR93/meccanicosubito/actions/runs/25602901328
+2026-05-09T13:58:35Z	Deploy production	push	main	failure	7b7f353	https://github.com/TurboR93/meccanicosubito/actions/runs/25602901327
+2026-05-09T13:38:35Z	Deploy production	push	main	failure	36c2143	https://github.com/TurboR93/meccanicosubito/actions/runs/25602499232
+2026-05-09T13:38:35Z	CI	push	main	success	36c2143	https://github.com/TurboR93/meccanicosubito/actions/runs/25602499230
+2026-05-09T13:02:55Z	CI	push	main	success	71a3429	https://github.com/TurboR93/meccanicosubito/actions/runs/25601804704
+2026-05-09T13:02:55Z	Deploy production	push	main	failure	71a3429	https://github.com/TurboR93/meccanicosubito/actions/runs/25601804690
+2026-05-09T12:50:13Z	Deploy production	workflow_dispatch	main	failure	1fb78b0	https://github.com/TurboR93/meccanicosubito/actions/runs/25601559296
+2026-05-09T12:48:12Z	CI	push	main	success	1fb78b0	https://github.com/TurboR93/meccanicosubito/actions/runs/25601520198
+2026-05-09T12:48:12Z	Deploy production	push	main	skipped	1fb78b0	https://github.com/TurboR93/meccanicosubito/actions/runs/25601520196
+2026-05-09T12:40:49Z	Deploy production	push	main	skipped	7d02760	https://github.com/TurboR93/meccanicosubito/actions/runs/25601374698
+2026-05-09T12:40:49Z	CI	push	main	success	7d02760	https://github.com/TurboR93/meccanicosubito/actions/runs/25601374692
+2026-05-09T12:38:17Z	Deploy production	push	main	skipped	0b471ed	https://github.com/TurboR93/meccanicosubito/actions/runs/25601324181
+2026-05-09T12:38:17Z	CI	push	main	success	0b471ed	https://github.com/TurboR93/meccanicosubito/actions/runs/25601324172
+2026-05-09T12:14:53Z	CI	push	main	success	d99d66f	https://github.com/TurboR93/meccanicosubito/actions/runs/25600869256
+2026-05-09T12:14:53Z	Deploy production	push	main	skipped	d99d66f	https://github.com/TurboR93/meccanicosubito/actions/runs/25600869254
+2026-05-09T11:56:58Z	CI	push	main	success	5976489	https://github.com/TurboR93/meccanicosubito/actions/runs/25600538980
+2026-05-09T11:56:58Z	Deploy production	push	main	skipped	5976489	https://github.com/TurboR93/meccanicosubito/actions/runs/25600538967
+2026-05-09T11:12:55Z	CI	push	main	success	4431c3c	https://github.com/TurboR93/meccanicosubito/actions/runs/25599720241
+2026-05-09T11:12:55Z	Deploy production	push	main	skipped	4431c3c	https://github.com/TurboR93/meccanicosubito/actions/runs/25599720229
+2026-05-08T17:27:37Z	Deploy GitHub Pages	workflow_dispatch	main	success	8e19a62	https://github.com/TurboR93/meccanicosubito/actions/runs/25569684670
+2026-05-08T17:25:38Z	Deploy GitHub Pages	push	main	success	8e19a62	https://github.com/TurboR93/meccanicosubito/actions/runs/25569593514
+2026-05-08T16:56:20Z	Deploy GitHub Pages	push	main	success	cae6869	https://github.com/TurboR93/meccanicosubito/actions/runs/25568267564
+2026-05-08T16:24:49Z	Deploy GitHub Pages	push	main	success	0bcd5c2	https://github.com/TurboR93/meccanicosubito/actions/runs/25566802295
+2026-05-04T12:46:03Z	Deploy GitHub Pages	push	main	success	d68e513	https://github.com/TurboR93/meccanicosubito/actions/runs/25319771087
+2026-05-04T12:38:20Z	Deploy GitHub Pages	push	main	success	3380d73	https://github.com/TurboR93/meccanicosubito/actions/runs/25319422534
+2026-05-04T12:02:45Z	Deploy GitHub Pages	push	main	success	1ec95ba	https://github.com/TurboR93/meccanicosubito/actions/runs/25317849127
+2026-05-04T11:31:28Z	Deploy GitHub Pages	push	main	success	17a8663	https://github.com/TurboR93/meccanicosubito/actions/runs/25316531163
+2026-05-04T11:12:08Z	Deploy GitHub Pages	push	main	success	9487c1f	https://github.com/TurboR93/meccanicosubito/actions/runs/25315751084
+2026-05-01T06:50:48Z	Deploy GitHub Pages	push	main	success	c12e8ab	https://github.com/TurboR93/meccanicosubito/actions/runs/25205615751
+2026-05-01T06:38:20Z	Deploy GitHub Pages	push	main	success	fbacf38	https://github.com/TurboR93/meccanicosubito/actions/runs/25205310670
+2026-04-30T21:05:40Z	Deploy GitHub Pages	push	main	success	e6c0bc7	https://github.com/TurboR93/meccanicosubito/actions/runs/25189305322
+2026-04-30T20:51:16Z	Deploy GitHub Pages	push	main	success	418c9f1	https://github.com/TurboR93/meccanicosubito/actions/runs/25188692580
+2026-04-30T20:21:32Z	Deploy GitHub Pages	push	main	success	1ae4892	https://github.com/TurboR93/meccanicosubito/actions/runs/25187410510
+2026-04-30T20:12:33Z	Deploy GitHub Pages	push	main	success	c1107bd	https://github.com/TurboR93/meccanicosubito/actions/runs/25187031667
+2026-04-30T20:02:40Z	Deploy GitHub Pages	push	main	success	03c31fc	https://github.com/TurboR93/meccanicosubito/actions/runs/25186607772
+2026-04-30T19:49:37Z	Deploy GitHub Pages	push	main	success	cd81db1	https://github.com/TurboR93/meccanicosubito/actions/runs/25186043346
+2026-04-30T19:07:45Z	Deploy GitHub Pages	push	main	success	726a6c2	https://github.com/TurboR93/meccanicosubito/actions/runs/25184227361
+2026-04-30T19:02:47Z	Deploy GitHub Pages	push	main	success	c7fc6fe	https://github.com/TurboR93/meccanicosubito/actions/runs/25184010426
+2026-04-30T18:55:15Z	Deploy GitHub Pages	push	main	success	44c98d0	https://github.com/TurboR93/meccanicosubito/actions/runs/25183667690
+2026-04-30T18:55:14Z	pages-build-deployment	dynamic	main	success	44c98d0	https://github.com/TurboR93/meccanicosubito/actions/runs/25183666891
+2026-04-30T18:52:42Z	Deploy GitHub Pages	push	main	failure	7a04ac3	https://github.com/TurboR93/meccanicosubito/actions/runs/25183551929
+2026-04-30T18:52:39Z	pages-build-deployment	dynamic	main	success	7a04ac3	https://github.com/TurboR93/meccanicosubito/actions/runs/25183550010
+2026-04-30T18:38:20Z	pages-build-deployment	dynamic	main	success	91484fd	https://github.com/TurboR93/meccanicosubito/actions/runs/25182888064

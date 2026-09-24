@@ -1,0 +1,36 @@
+# Mascheramento secrets nei log — run CD 26680816310 — 2026-09-14 12:04
+Righe di log: 1742
+Occorrenze mascherate '***': 31
+Match di pattern di chiavi in chiaro (sb_publishable_…, pk_live/test_…, BEGIN OPENSSH, IP VPS): 0
+
+## Righe con valori mascherati
+              "build-arg:NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "***",
+              "build-arg:NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": "***",
+              "build-arg:NEXT_PUBLIC_SUPABASE_URL": "***",
+          "build-arg:NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "***",
+          "build-arg:NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": "***",
+          "build-arg:NEXT_PUBLIC_SUPABASE_URL": "***",
+  github-token: ***
+Build & push image	Build and push	NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=***
+Build & push image	Build and push	NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=***
+Build & push image	Build and push	NEXT_PUBLIC_SUPABASE_URL=***
+Build & push image	Checkout	2026-05-30T09:50:39.8889942Z   token: ***
+Build & push image	Checkout	2026-05-30T09:50:40.1681052Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Build & push image	Login to GHCR	2026-05-30T09:50:48.5755589Z   password: ***
+Deploy to VPS	Deploy	  echo "No previous :latest yet — first ***"
+Deploy to VPS	Deploy	# Pre-*** guard (Gap #1).
+Deploy to VPS	Deploy	./***/pre***-check.sh
+Deploy to VPS	Deploy	2026-05-30T09:53:23.6772157Z   host: ***
+Deploy to VPS	Deploy	2026-05-30T09:53:23.6772732Z   username: ***
+Deploy to VPS	Deploy	2026-05-30T09:53:23.6776476Z   key: ***
+Deploy to VPS	Deploy	2026-05-30T09:53:23.7210534Z   INPUT_HOST: ***
+Deploy to VPS	Deploy	2026-05-30T09:53:23.7212307Z   INPUT_USERNAME: ***
+Deploy to VPS	Deploy	2026-05-30T09:53:23.7217498Z   INPUT_KEY: ***
+Deploy to VPS	Deploy	2026-05-30T09:53:28.0884321Z === Pre-*** env check passed ===
+Deploy to VPS	Deploy	cd /home/***/meccanicosubito
+Deploy to VPS	Deploy	echo "***" | docker login ghcr.io -u "TurboR93" --password-stdin
+[command]/usr/bin/docker buildx build --build-arg NEXT_PUBLIC_DATA_SOURCE=supabase --build-arg NEXT_PUBLIC_SUPABASE_URL=*** --build-arg NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=*** --build-arg NEXT_PUBLIC_COMMIT_SHA=e3b58b1858c32b95457554c5837c781956230737 --build-arg NEXT_PUBLIC_BUILD_TIME=2026-05-30T10:39:55+02:00 --build-arg NEXT_PUBLIC_SITE_URL=https://meccanicosubito.it --build-arg NEXT_PUBLIC_GTM_ID=GTM-MP8K6CHS --build-arg NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=*** --build-arg NEXT_PUBLIC_STRIPE_BNPL_MIN_AMOUNT_CENTS=15000 --build-arg NEXT_PUBLIC_DEPOSIT_ENABLED=true --cache-from type=gha --cache-to type=gha,mode=max --file Dockerfile --iidfile /home/runner/work/_temp/docker-actions-toolkit-lJQVi7/build-iidfile-54a37cc452.txt --attest type=provenance,mode=min,inline-only=true,builder-id=https://github.com/TurboR93/meccanicosubito/actions/runs/26680816310/attempts/1 --tag ghcr.io/turbor93/meccanicosubito:e3b58b1858c32b95457554c5837c781956230737 --tag ghcr.io/turbor93/meccanicosubito:latest --metadata-file /home/runner/work/_temp/docker-actions-toolkit-lJQVi7/build-metadata-3f69aaf8d4.json --push .
+
+# Run CD fallita 26833635113 (anche l'host nel messaggio d'errore è mascherato)
+Deploy to VPS	Deploy	2026-06-02T16:36:19.9424406Z 2026/06/02 16:36:19 dial tcp ***:22: i/o timeout
+Deploy to VPS	Deploy	2026-06-02T16:36:19.9433146Z ##[error]Process completed with exit code 1.
