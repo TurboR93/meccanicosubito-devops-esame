@@ -11,6 +11,10 @@
 > La pipeline storica non viene presentata come automazione ancora attiva.
 > Stato della consegna e verifiche residue: §9.
 
+> **Audit sulla traccia completa, 24/09/2026: conformità parziale.**
+> La documentazione storica non dimostra tutti i requisiti operativi richiesti.
+> Vedi [verifica punto per punto](VERIFICA-CONFORMITA.md) e §9.
+
 | | |
 |---|---|
 | **URL pubblico** | https://meccanicosubito.it — health: https://meccanicosubito.it/api/health |
@@ -221,7 +225,7 @@ docker buildx build --platform linux/amd64 -t ghcr.io/turbor93/meccanicosubito:$
 
 ```bash
 $ git log --all --diff-filter=A --name-only -- .env .env.local .env.production .env.backup '*.env'
-# (nessun output: nessun .env reale è mai stato aggiunto, in nessun branch)
+# (nessun output nei percorsi e nei ref disponibili controllati)
 $ git ls-files | grep -i env
 .env.backup.example  .env.local.example  .env.production.example
 $ git check-ignore -v .env.local .env.production .env.backup
@@ -275,7 +279,7 @@ jobs:
     steps: checkout → setup-node 20 (cache npm) → npm ci
            → npm run typecheck     (tsc --noEmit)
            → npm run lint          (next lint: next/core-web-vitals + next/typescript)
-           → npm run build:docker  (build standalone identica a quella del container)
+           → npm run build:docker  (Next.js standalone; non costruisce l'immagine Docker)
 ```
 
 - **Trigger** a ogni push su `main` e su ogni PR; `concurrency` cancella le run superate.
@@ -290,6 +294,9 @@ jobs:
 
 > **Nota sulla build Docker:** `next.config.ts` imposta `eslint.ignoreDuringBuilds` quando
 > `BUILD_TARGET=docker`. Per questo il lint è uno **step separato ed esplicito** della CI.
+> Lo script esegue `BUILD_TARGET=docker next build`: la build dell'immagine avveniva
+> nel workflow CD separato. Non è dimostrato il requisito «lint + build container»
+> come sequenza che blocchi il deploy se il lint fallisce.
 
 ---
 
@@ -327,7 +334,7 @@ push main ─► build-and-push ─► wait-for-schema ─► deploy (SSH) ─�
 >   needs: [build-and-push, deploy]
 >   if: ${{ always() && needs.deploy.result == 'success' }}
 > ```
-> Con lo stesso difetto, CI e deploy erano due workflow **paralleli** e il deploy non aspettava
+> Un problema distinto: CI e deploy erano due workflow **paralleli** e il deploy non aspettava
 > la CI. Andrebbero legati con `needs:` in un unico workflow, oppure con `on: workflow_run`.
 
 ### 7.1 Deploy attuale (fase 3) — `npm run deploy`
@@ -408,22 +415,30 @@ Prova attuale: [`10-produzione-health-attuale.json`](./evidenze/10-produzione-he
 
 ---
 
-## 9. Stato della consegna e ultime verifiche
+## 9. Stato della consegna rispetto alla traccia completa
 
-| Requisito | Stato | Cosa serve |
-|---|---|---|
-| CI storica su push a `main`, lint e build | ✅ run del 02/06/2026 riverificata | esiti esportati in `08-ci-storica-verificata.json`; screenshot dashboard facoltativo |
-| CD storico automatico su push a `main` | ✅ build e deploy riusciti nella run del 30/05/2026 | esiti in `09-cd-storica-verificata.json`; schema e smoke test risultano skipped, come discusso nel §7 |
-| Staging logico prima del deploy | ✅ scelta documentata nel §2 | spiegare prove locali, dry run e separazione dai controlli post-deploy |
-| Uptime monitor | ✅ attivo, riscontrato nei log il 22/09 | verificare alert e acquisire screenshot dashboard; non serve attivare un altro monitor |
-| Error tracker + evento registrato | ✅ Sentry attivo in produzione, evento `MECCANICOSUBITO-2` del 15/09/2026 | screenshot in `screenshot/sentry-*.png` |
-| Alert effettivamente ricevuti | 🟡 non provati dagli screenshot degli eventi | verificare destinatari UptimeRobot e regola Sentry; conservare una notifica di test senza interrompere il sito |
-| Analisi e stato produzione | ✅ documentazione allineata, health verificato il 23/09 | codice originale `6b577b7` consultato privatamente, release live `756d161`; distinzione dalle run di maggio/giugno |
+**Esito del 24/09: conformità parziale.** La matrice completa e le prove consultate
+sono in [VERIFICA-CONFORMITA.md](VERIFICA-CONFORMITA.md).
 
-**Per l'esposizione:** la pipeline storica dimostra la CI/CD implementata; i suoi limiti
-(`smoke-test` saltato, CI e CD indipendenti) sono parte dell'analisi. La versione attuale sceglie
-il rilascio scriptato dal Mac, con staging logico. Non presento staging remoto o ripristino
-della pipeline come lavori necessari a questa consegna.
+| Area | Stato rispetto alla richiesta |
+|---|---|
+| Analisi, scelta strumenti e comandi | Documentati; pianificazione iniziale non dimostrata dal primo README. |
+| Tre ambienti | Staging come fase locale documentato; separazione da development e prove da precisare. Non è richiesto necessariamente un server remoto. |
+| Containerizzazione | Dockerfile presente; Compose solo front end, Supabase avviato a parte. Prova dell'avvio locale non allegata. |
+| Sicurezza | Verifiche e inventari disponibili, con i limiti dei percorsi e dei log esaminati. |
+| CI | Lint e build Next.js storici verificati; build immagine nel workflow CD separato. CI applicativa non attiva oggi. |
+| CD | Deploy storico riuscito, ma indipendente dall'esito CI. Oggi avvio manuale dal Mac; VPS diverso dai provider richiesti. |
+| Prove delle run | JSON pubblici disponibili, link originali privati: screenshot o accesso al docente necessari per la consultazione delle run richieste. |
+| Monitoraggio | Uptime documentato; evento Sentry e screenshot presenti, guida agli alert presente. Destinatari e ricezione degli avvisi non dimostrati. |
+| URL pubblico | Home e health nuovamente HTTP 200 il 24/09 alle 08:45 UTC; release `756d161`. |
+
+**Per l'esposizione:** le run storiche provano ciò che hanno eseguito, non un deploy
+bloccato dalla CI né l'automazione attuale. La scelta di raccontare la storia del progetto
+resta valida come perimetro narrativo; per soddisfare la traccia occorrono correzioni
+dimostrate o l'accettazione delle differenze da parte del docente. Non basta aggiornare
+la documentazione. Smoke test e rollback saltati restano limiti storici, pur non essendo
+requisiti espliciti della traccia. PDF e Canva precedono questo audit e vanno letti
+insieme al rapporto di conformità.
 
 **Condivisione:** questa repository dell’esame è pubblica e separata dalla repository
 privata della webapp. Relazione, PDF, prove esportate e configurazioni illustrative

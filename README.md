@@ -6,6 +6,11 @@ Questa repository pubblica raccoglie **solo i materiali dell’esame**: presenta
 relazione tecnica, prove, workflow storici e configurazioni illustrative Docker.
 Il codice dell’applicazione MeccanicoSubito resta nella sua repository privata.
 
+**Verifica della traccia completa (24/09): conformità parziale.** Restano scostamenti
+su CI/CD, Compose locale e destinazione del deploy, oltre ad alcune prove mancanti.
+La [verifica punto per punto](consegna/VERIFICA-CONFORMITA.md) distingue implementazioni
+storiche, stato attuale e requisiti non ancora dimostrati.
+
 Il progetto racconta la **pipeline CI/CD storica su GitHub Actions**, lo
 **staging logico locale prima del deploy** e il monitoraggio della webapp con
 Sentry e UptimeRobot. App pubblica: [meccanicosubito.it](https://meccanicosubito.it).

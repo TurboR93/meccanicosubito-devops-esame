@@ -8,8 +8,9 @@ dell’esame, con storia Git autonoma. Il codice dell’applicazione non viene p
 
 La presentazione riguarda la **pipeline CI/CD storica**, lo **staging logico
 locale prima del deploy** e il monitoraggio oggi implementato sulla webapp.
-Il perimetro è stato confermato da Riccardo: non occorre riattivare Actions
-né creare un server di staging per questa consegna.
+Riccardo ha scelto di presentare la pipeline storica e lo staging logico locale.
+Questa scelta non dimostra da sola la conformità letterale alla traccia completa:
+vedi la [verifica del 24/09](consegna/VERIFICA-CONFORMITA.md).
 
 ## Materiali da usare
 
@@ -34,7 +35,17 @@ repository pubblica. Per la consegna fanno fede il PDF e la relazione indicati s
 - UptimeRobot riconosciuto come già attivo, sulla base della verifica operativa
   nei log del 22 settembre. Rimossa la vecchia indicazione “da attivare”.
 
-## Ultimo controllo operativo
+## Scostamenti e controlli ancora aperti
+
+La consegna non è completamente conforme: mancano un percorso CI → build immagine →
+deploy vincolato al lint, il Compose locale con front end e back end e la prova
+del relativo avvio. Il VPS e la pipeline storica differiscono dalla richiesta
+di deploy automatico sui provider indicati. Da dimostrare anche la distinzione
+dello staging locale e la pianificazione iniziale. I link alle run originali
+restano privati: servono screenshot o accesso del docente.
+
+Il rapporto di conformità integra PDF e Canva, che non sono stati modificati
+durante questo audit. I controlli sugli alert qui sotto non sono le sole attività residue.
 
 - [ ] UptimeRobot: verificare destinatario, intervallo e ritardo degli alert nella dashboard;
       salvare una schermata del monitor e una prova dell'avviso.
