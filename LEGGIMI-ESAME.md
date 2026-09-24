@@ -40,8 +40,10 @@ repository pubblica. Per la consegna fanno fede il PDF e la relazione indicati s
       salvare una schermata del monitor e una prova dell'avviso.
 - [ ] Sentry: verificare la regola di alert e una notifica ricevuta. Un evento in Issues
       da solo non dimostra che sia arrivata un'email.
-- [ ] Consegna: verificare che il docente possa aprire PDF e prove dalla repository
-      pubblica; solo le run Actions originali richiedono accesso alla repository privata.
+- [x] Consegna: accesso senza autenticazione verificato il 24 settembre per README,
+      PDF e prova CI esportata (HTTP 200 e contenuti identici ai file locali).
+      Verificati tutti i 32 file pubblicati; la repository originale resta privata.
+      Solo le run Actions originali richiedono accesso alla repository privata.
 
 Non serve provocare un'interruzione del sito per completare le prove degli avvisi.
 La repository pubblica è documentale: non esegue la build o il deploy dell’app.
